@@ -146,4 +146,82 @@ http_interactions:
       string: The requested resource could not be found.
     http_version: 
   recorded_at: Sat, 18 Jul 2015 21:12:59 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 21:45:59 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '676'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","url":"https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc"},"url":"https://api.layer.com/apps/<APP_ID>/messages/75742be2-3a91-4f51-a528-224eaafe350c","sent_at":"2015-07-18T21:45:59.730Z","id":"layer:///messages/75742be2-3a91-4f51-a528-224eaafe350c","recipient_status":{"1234":"sent","5678":"sent","user2":"sent","user1":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","encoding":"base64"}]}'
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 21:45:59 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 21:55:16 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '676'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","url":"https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc"},"url":"https://api.layer.com/apps/<APP_ID>/messages/ede69c17-9cc8-44b3-b15e-d26deb2420b3","sent_at":"2015-07-18T21:55:16.341Z","id":"layer:///messages/ede69c17-9cc8-44b3-b15e-d26deb2420b3","recipient_status":{"1234":"sent","5678":"sent","user2":"sent","user1":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","encoding":"base64"}]}'
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 21:55:16 GMT
 recorded_with: VCR 2.9.3

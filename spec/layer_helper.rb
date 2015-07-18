@@ -35,4 +35,27 @@ module LayerHelper
       }
     }
   end
+
+  def message_params
+    {
+      sender: {
+          name: "t-bone"
+      },
+      parts: [
+          {
+              body: "Hello, World!",
+              mime_type: "text/plain"
+          },
+          {
+              body: "YW55IGNhcm5hbCBwbGVhc3VyZQ==",
+              mime_type: "image/jpeg",
+              encoding: "base64"
+          }
+      ],
+      notification: {
+          text: "This is the alert text to include with the Push Notification.",
+          sound: "chime.aiff"
+      }
+    }
+  end
 end
