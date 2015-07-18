@@ -11,7 +11,7 @@ module Layer
       end
 
       def unblock_user(owner_id, user_id)
-        connection.delete("users/#{owner_id}/blocks/#{user_id}")
+        delete("users/#{owner_id}/blocks/#{user_id}")
       end
     end
   end

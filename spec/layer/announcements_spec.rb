@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-require 'pry'
-
-
 describe Layer::Api::Announcements do
   before do
     @layer = Layer::Api::Client.new(
