@@ -18,14 +18,6 @@ module Layer
       def base_url
         "#{DEFAULT_HOST}/apps/#{app_id}"
       end
-
-      def connection
-        connection ||= Faraday.new(url: base_url) do |faraday|
-          faraday.headers = default_layer_headers
-          faraday.request  :url_encoded
-          faraday.adapter  Faraday.default_adapter
-        end
-      end
     end
   end
 end

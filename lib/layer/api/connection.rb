@@ -6,6 +6,7 @@ module Layer
           faraday.headers = default_layer_headers
           faraday.request  :url_encoded
           faraday.adapter  Faraday.default_adapter
+          faraday.use Middleware::ApiErrors
         end
       end
 
