@@ -18,6 +18,13 @@ module Layer
         )
       end
 
+      def send_message(conversation_id, message = {})
+        response = connection.post("conversations/#{conversation_id}/messages",
+          message.to_json
+        )
+        JSON.parse(response)
+      end
+
       def get_stripped_id(raw_id)
         raw_id.sub("layer:///conversations/", "")
       end
