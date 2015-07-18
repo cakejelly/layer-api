@@ -15,8 +15,8 @@ module Layer
       attr_accessor :api_token, :app_id
 
       def initialize(options = {})
-        @api_token = options[:api_token]
-        @app_id = options[:app_id]
+        @api_token = options[:api_token] || ENV['LAYER_API_TOKEN']
+        @app_id = options[:app_id] || ENV['LAYER_APP_ID']
       end
     end
   end
