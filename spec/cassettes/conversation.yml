@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations
+    body:
+      encoding: UTF-8
+      string: '{"participants":["1234","5678"],"distinct":false,"metadata":{"background_color":"#3c3c3c"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 16:41:47 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '321'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","participants":["5678","1234"],"id":"layer:///conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2015-07-18T16:41:47.840Z"}'
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 16:41:48 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 16:41:48 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '321'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","participants":["5678","1234"],"id":"layer:///conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2015-07-18T16:41:47.840Z"}'
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 16:41:48 GMT
+- request:
+    method: patch
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc
+    body:
+      encoding: UTF-8
+      string: '[{"operation":"add","property":"participants","value":"user1"},{"operation":"add","property":"participants","value":"user2"}]'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/vnd.layer-patch+json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 16:41:49 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 16:41:49 GMT
+recorded_with: VCR 2.9.3

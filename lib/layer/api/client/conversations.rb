@@ -17,6 +17,10 @@ module Layer
           layer_patch_header
         )
       end
+
+      def get_stripped_id(raw_id)
+        raw_id.sub("layer:///conversations/", "")
+      end
     end
   end
 end

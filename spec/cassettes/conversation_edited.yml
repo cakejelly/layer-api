@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Sat, 18 Jul 2015 16:41:49 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '337'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","participants":["1234","5678","user2","user1"],"id":"layer:///conversations/9198ddce-d7c1-4f6f-99d8-fbc7f69954fc","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2015-07-18T16:41:47.840Z"}'
+    http_version: 
+  recorded_at: Sat, 18 Jul 2015 16:41:50 GMT
+recorded_with: VCR 2.9.3
