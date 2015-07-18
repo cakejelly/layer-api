@@ -6,7 +6,7 @@ module Layer
 
         def on_complete(response)
           if ERROR_CODES.include?(response.status)
-            raise Layer::Api::Error, response
+            raise Layer::Api::Error.from_response(response)
           end
         end
       end

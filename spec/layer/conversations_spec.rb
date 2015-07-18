@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe Layer::Api::Conversations do
   before do
@@ -10,13 +9,25 @@ describe Layer::Api::Conversations do
   end
 
   describe ".get_conversation" do
-    it "should return conversation" do
-      VCR.use_cassette('conversation') do
-        existing_conversation = @layer.create_conversation(conversation_params)
-        existing_id = @layer.get_stripped_id(existing_conversation["id"])
-        conversation = @layer.get_conversation(existing_id)
+    context "when the conversation exists" do
+      it "should return conversation" do
+        VCR.use_cassette('conversation') do
+          existing_conversation = @layer.create_conversation(conversation_params)
+          existing_id = @layer.get_stripped_id(existing_conversation["id"])
+          conversation = @layer.get_conversation(existing_id)
 
-        expect(existing_conversation).to eq(conversation)
+          expect(existing_conversation).to eq(conversation)
+        end
+      end
+    end
+
+    context "when the conversation doesn't exist" do
+      it "should raise NotFound error" do
+        VCR.use_cassette('conversation') do
+          expect {
+            conversation = @layer.get_conversation("dontexist")
+          }.to raise_error(Layer::Api::NotFound)
+        end
       end
     end
   end
