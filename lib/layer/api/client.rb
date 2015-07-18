@@ -1,4 +1,5 @@
 require "layer/api/client/conversations"
+require "layer/api/client/announcements"
 
 module Layer
   module Api
@@ -6,6 +7,7 @@ module Layer
       include Layer::Api::Configuration
 
       include Layer::Api::Conversations
+      include Layer::Api::Announcements
 
       attr_accessor :api_token, :app_id
 
