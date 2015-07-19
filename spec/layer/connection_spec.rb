@@ -5,7 +5,12 @@ describe Layer::Api::Connection do
     @layer = Layer::Api::Client.new
     @conn = @layer.connection
   end
+
   describe ".connection" do
+    it "should use the default base url" do
+      expect(@conn.url_prefix.to_s).to eq(@layer.base_url)
+    end
+
     it "should return a connection containing default layer headers" do
       expect(@conn.headers).to include(@layer.default_layer_headers)
     end
