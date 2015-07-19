@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Layer
   module Api
     module Configuration
@@ -7,7 +9,8 @@ module Layer
         {
           'Accept' => 'application/vnd.layer+json; version=1.0',
           'Authorization' => "Bearer #{api_token}",
-          'Content-Type' => 'application/json'
+          'Content-Type' => 'application/json',
+          'If-None-Match' => SecureRandom.uuid
         }
       end
 
