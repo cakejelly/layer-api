@@ -12,7 +12,6 @@ describe Layer::Api::Users do
     it "should return a users blocklist" do
       VCR.use_cassette('user') do
         blocklist = @layer.get_blocklist("testuser")
-        # Add a user to test_user's blocklist
         expect(blocklist).to be_instance_of(Array)
       end
     end
