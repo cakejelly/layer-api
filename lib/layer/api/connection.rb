@@ -2,7 +2,7 @@ module Layer
   module Api
     module Connection
       def connection
-        connection ||= Faraday.new(url: base_url) do |faraday|
+        @connection ||= Faraday.new(url: base_url) do |faraday|
           faraday.headers = default_layer_headers
           faraday.request  :url_encoded
           faraday.adapter  Faraday.default_adapter
