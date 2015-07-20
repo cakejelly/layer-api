@@ -12,7 +12,11 @@ describe Layer::Api::Connection do
     end
 
     it "should return a connection containing default layer headers" do
-      expect(@conn.headers).to include(@layer.default_layer_headers)
+      # Remove If-None-Match header since it's always going to be random
+      # and we can't compare it
+      default_headers = @layer.default_layer_headers.reject{|k, v| k == 'If-None-Match'}
+      expect(@conn.headers).to include(default_headers)
+      expect(@conn.headers).to include("If-None-Match")
     end
 
     it "should use custom api errors middleware" do
