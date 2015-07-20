@@ -224,4 +224,123 @@ http_interactions:
         World!"},{"mime_type":"image/jpeg","body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","encoding":"base64"}]}'
     http_version: 
   recorded_at: Sat, 18 Jul 2015 21:55:16 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/test/blocks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - 57175374-4db7-4d16-b86a-de929ca472f5
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Mon, 20 Jul 2015 23:07:04 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '23'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":"blocked"}]'
+    http_version: 
+  recorded_at: Mon, 20 Jul 2015 23:07:04 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/test/blocks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - 78d26713-a9b2-4ce3-9083-bc832b3526cf
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Mon, 20 Jul 2015 23:14:06 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '23'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":"blocked"}]'
+    http_version: 
+  recorded_at: Mon, 20 Jul 2015 23:14:06 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/announcements
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - abf0f795-8730-4d03-84fa-6697f3645766
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Mon, 20 Jul 2015 23:24:06 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"invalid_request","code":10,"message":"A request body is required."}'
+    http_version: 
+  recorded_at: Mon, 20 Jul 2015 23:24:06 GMT
 recorded_with: VCR 2.9.3
