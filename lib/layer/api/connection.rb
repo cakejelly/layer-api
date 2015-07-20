@@ -11,29 +11,33 @@ module Layer
       end
 
       def get(url, options = {})
-        run_request(:get, url, options)
+        call(:get, url, options)
       end
 
       def post(url, options = {})
-        run_request(:post, url, options)
+        call(:post, url, options)
       end
 
       def patch(url, options = {})
-        run_request(:patch, url, options)
+        call(:patch, url, options)
       end
 
       def delete(url)
-        run_request(:delete, url, options = {})
+        call(:delete, url, options = {})
+      end
+
+      def call(method, url, options = {})
+        response = run_request(method, url, options)
+        response.body.empty? ? nil : JSON.parse(response.body)
       end
 
       def run_request(method, url, options = {})
-        response = connection.run_request(
+        connection.run_request(
           method,
           url,
           options[:body],
           options[:headers]
         )
-        JSON.parse(response.body) if !response.body.empty?
       end
     end
   end
