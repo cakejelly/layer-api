@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.10.1"
 
   spec.add_dependency "faraday", "~> 0.9.1"
+  spec.add_dependency "jwt", "~> 1.5.1"
 end
