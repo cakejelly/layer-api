@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Api::Connection do
+
   before do
     @layer = Layer::Api::Client.new
     @conn = @layer.connection
@@ -55,6 +56,38 @@ describe Layer::Api::Connection do
         request = @layer.run_request(method, 'announcements', announcement_params)
 
         expect(request.env.method).to eq(method)
+      end
+    end
+  end
+
+  describe ".call" do
+    it "should run request & return response body" do
+      VCR.use_cassette('conversation') do
+        existing_conversation = @layer.create_conversation(conversation_params)
+        existing_id = @layer.get_stripped_id(existing_conversation["id"])
+
+        url = "#{@layer.base_url}/conversations/#{existing_id}"
+        body = @layer.call(:get, url, conversation_params)
+
+        # Compare body with expected values
+        expect(body["participants"]).to match_array(conversation_params[:participants])
+        expect(body["distinct"]).to eq(conversation_params[:distinct])
+        expect(body["metadata"].to_json).to eq(conversation_params[:metadata].to_json)
+      end
+    end
+
+    it "should run request & return nil if response has no body" do
+      VCR.use_cassette('conversation') do
+        existing_conversation = @layer.create_conversation(conversation_params)
+        existing_conversation_id = @layer.get_stripped_id(existing_conversation["id"])
+
+        operations = [
+          {operation: "add", property: "participants", value: "user1"},
+          {operation: "add", property: "participants", value: "user2"}
+        ]
+
+        response = @layer.edit_conversation(existing_conversation_id, operations)
+        expect(response).to be(nil)
       end
     end
   end
