@@ -20,6 +20,10 @@ module Layer
         super(build_error_message)
       end
 
+      def response
+        @response
+      end
+
       private
 
       def build_error_message
