@@ -1,6 +1,7 @@
 require "layer/api/client/conversations"
 require "layer/api/client/announcements"
 require "layer/api/client/users"
+require "layer/api/client/identity_token"
 
 module Layer
   module Api

@@ -10,9 +10,8 @@ module Layer
                     when 500..599 then Layer::Api::ServerError
                     else self
                     end
+          klass.new(response)
         end
-
-        klass.new(response)
       end
 
       def initialize(response)

@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require 'jwt'
 
 require "layer/api/version"
 require "layer/api/configuration"
