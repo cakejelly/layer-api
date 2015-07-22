@@ -18,6 +18,7 @@ module Layer
       def initialize(options = {})
         @api_token = options[:api_token] || ENV['LAYER_API_TOKEN']
         @app_id = options[:app_id] || ENV['LAYER_APP_ID']
+        strip_layer_prefix(@app_id)
       end
     end
   end
