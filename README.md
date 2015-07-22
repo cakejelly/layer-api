@@ -142,6 +142,19 @@ layer.block_user("owner_id", "user_id")
 layer.unblock_user("owner_id", "user_id")
 ```
 
+### Generating Identity Tokens
+See: [the official authentication guide](https://developer.layer.com/docs/android/guides#authentication)
+
+Make sure the following environment variables are set:
+`ENV['LAYER_KEY_ID']`
+`ENV['LAYER_PROVIDER_ID']`
+`ENV['LAYER_PRIVATE_KEY']`
+
+```ruby
+# Returns a valid signed identity token.
+layer.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
