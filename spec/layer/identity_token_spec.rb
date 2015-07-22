@@ -7,7 +7,6 @@ describe Layer::Api::IdentityToken do
       nonce = "your_random_nonce"
       expires_at = "12345678"
 
-      # layer = Layer::Api::Client.new
       token = Layer::Api::IdentityToken.new(
         user_id: user_id,
         nonce: nonce,
@@ -34,21 +33,59 @@ describe Layer::Api::IdentityToken do
     end
   end
 
-  describe ".get_jwt" do
-  end
-
   describe ".headers" do
+    it "should return necessary headers" do
+      token = Layer::Api::IdentityToken.new
+
+      headers = token.send(:headers)
+
+      expect(headers[:kid]).to eq(ENV['LAYER_KEY_ID'])
+      expect(headers[:cty]).to eq('layer-eit;v=1')
+      expect(headers[:typ]).to eq('JWT')
+    end
   end
 
   describe ".claim" do
+    it "should return necessary payload" do
+      token = Layer::Api::IdentityToken.new(
+        user_id: "user_id",
+        nonce: "nonce",
+        expires_at: 1234567
+      )
+
+      claim = token.send(:claim)
+
+      expect(claim[:iss]).to eq(token.layer_provider_id)
+      expect(claim[:prn]).to eq(token.user_id)
+      expect(claim[:exp]).to eq(token.expires_at)
+      expect(claim[:nce]).to eq(token.nonce)
+    end
   end
 
   describe ".private_key" do
+    it "should return valid rsa private key" do
+      key = Layer::Api::IdentityToken.new.send(:private_key)
+      expect(key).to be_instance_of(OpenSSL::PKey::RSA)
+    end
   end
 
   describe ".to_s" do
+    it "should return a string representation of the identity token" do
+      token = Layer::Api::IdentityToken.new.to_s
+      expect(token).to be_instance_of(String)
+    end
   end
 
   describe ".generate_identity_token" do
+    it "should return the correct IdentityToken" do
+      options = {}
+      options[:user_id] = "user_id"
+      options[:nonce] = "user_id"
+      layer = Layer::Api::Client.new
+      expected_token = Layer::Api::IdentityToken.new(options).to_s
+      actual_token = layer.generate_identity_token(options)
+
+      expect(actual_token).to eq(expected_token)
+    end
   end
 end
