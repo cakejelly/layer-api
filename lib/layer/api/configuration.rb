@@ -21,6 +21,10 @@ module Layer
       def base_url
         "#{DEFAULT_HOST}/apps/#{app_id}"
       end
+
+      def strip_layer_prefix(string)
+        string.split("/").last if string
+      end
     end
   end
 end
