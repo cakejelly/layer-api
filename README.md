@@ -5,6 +5,8 @@ A very simple wrapper for the Layer Platform API.
 
 If you want to learn more, check out the [official documentation](https://developer.layer.com/docs/platform).
 
+See [here](https://github.com/cakejelly/ruby-platform-implementation) for a sample API implementation using this gem and [Grape](https://github.com/intridea/grape)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -69,7 +71,7 @@ operations = [
   {operation: "add", property: "participants", value: "user2"}
 ]
 
-layer.edit_conversation(operations)
+layer.edit_conversation("conversation_id", operations)
 ```
 
 ### Sending messages
