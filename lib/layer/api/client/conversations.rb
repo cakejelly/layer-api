@@ -12,7 +12,7 @@ module Layer
       def edit_conversation(conversation_id, params = {})
         patch("conversations/#{conversation_id}",
           body: params.to_json,
-          headers: layer_patch_header
+          headers: client.layer_patch_header
         )
       end
 
