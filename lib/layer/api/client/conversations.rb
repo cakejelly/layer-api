@@ -25,6 +25,10 @@ module Layer
       def get_stripped_id(raw_id)
         raw_id.sub("layer:///conversations/", "")
       end
+
+      def conversations
+        ResourceProxy.new(nil, Layer::Resources::Conversation)
+      end
     end
   end
 end
