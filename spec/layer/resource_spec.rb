@@ -61,4 +61,22 @@ describe Layer::Api::Resource do
       expect(url).to eq(attributes["url"])
     end
   end
+
+  describe "#method_missing" do
+    context "when key exists in attributes" do
+      it "should return the value for that key" do
+        key = "key"
+        value = "value"
+        resource = Layer::Api::Resource.new({key => value})
+
+        expect(resource.key).to eq(value)
+      end
+    end
+    context "when key doesn't exist in attributes" do
+      it "should raise NoMethodError" do
+        resource = Layer::Api::Resource.new({})
+        expect{resource.blah}.to raise_error(NoMethodError)
+      end
+    end
+  end
 end

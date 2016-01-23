@@ -18,12 +18,18 @@ module Layer
         client.delete(url)
       end
 
-      def url
-        attributes['url']
-      end
-
       def client
         self.class.client
+      end
+
+      def method_missing(method, *args, &block)
+        method_key = method.to_s
+        attributes.has_key?(method_key) ? attributes[method_key] : super
+      end
+
+      def respond_to_missing?(method, include_private = false)
+        method_key = method.to_s
+        attributes.has_key?(method_key) ? true : false
       end
 
       class << self
