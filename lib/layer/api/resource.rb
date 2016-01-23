@@ -14,6 +14,10 @@ module Layer
         )
       end
 
+      def destroy
+        client.delete(url)
+      end
+
       def url
         attributes['url']
       end
