@@ -1,0 +1,15 @@
+module Layer
+  module Resources
+    class Block < Layer::Api::Resource
+      def self.list(url, params = {})
+        collection = client.get(url, body: params.to_json)
+
+        if collection.any?
+          collection.map{ |resource| new({"url" => "#{url}/#{resource['user_id']}"}) }
+        else
+          []
+        end
+      end
+    end
+  end
+end

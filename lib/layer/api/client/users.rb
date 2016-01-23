@@ -13,6 +13,10 @@ module Layer
       def unblock_user(owner_id, user_id)
         delete("users/#{owner_id}/blocks/#{user_id}")
       end
+
+      def users
+        Layer::Api::ResourceProxy.new(nil, Layer::Resources::User)
+      end
     end
   end
 end
