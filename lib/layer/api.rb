@@ -11,6 +11,7 @@ require "layer/api/resource_proxy"
 
 require "layer/api/resources/conversation"
 require "layer/api/resources/message"
+require "layer/api/resources/announcement"
 
 require "layer/api/middleware/api_errors"
 
