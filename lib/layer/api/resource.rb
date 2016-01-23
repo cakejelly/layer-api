@@ -55,6 +55,14 @@ module Layer
           response = client.get("#{url}/#{id}")
           new(response)
         end
+
+        def list(url, params = {})
+          collection = client.get(url, body: params.to_json)
+
+          if collection.any?
+            collection.map{ |resource| new(resource) }
+          end
+        end
       end
     end
   end
