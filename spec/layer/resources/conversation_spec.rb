@@ -81,6 +81,21 @@ describe Layer::Resources::Conversation do
     end
   end
 
+  describe "#destroy" do
+    it "should remove conversation" do
+      VCR.use_cassette("conversation") do
+        conversation = client.conversations.create(conversation_params)
+        conversation.destroy
+
+        VCR.use_cassette("conversation_destroyed", exclusive: true) do
+          expect {
+            removed_conv = client.conversations.find(client.strip_layer_prefix(conversation.id))
+          }.to raise_error(Layer::Api::Error)
+        end
+      end
+    end
+  end
+
   describe "#messages" do
     it "should instantiate new ResourceProxy" do
       VCR.use_cassette("conversation") do
