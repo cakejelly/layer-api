@@ -76,7 +76,7 @@ describe Layer::Resources::Message do
   describe ".find" do
     context "in a conversation" do
       it "should return message" do
-        VCR.use_cassette("conversation") do
+        VCR.use_cassette("conversation_find") do
           conv = client.conversations.create(conversation_params)
 
           VCR.use_cassette("messages", exclusive: true) do

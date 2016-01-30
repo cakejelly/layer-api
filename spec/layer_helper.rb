@@ -5,7 +5,7 @@ module LayerHelper
         "1234",
         "5678"
       ],
-      distinct: false,
+      distinct: true,
       metadata: {
         background_color: "#3c3c3c"
       }
