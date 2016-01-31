@@ -3,7 +3,7 @@ require 'pry'
 
 describe Layer::Api::Conversations do
   before do
-    @layer = Layer::Api::Client.new(
+    @layer = Layer::Platform::Client.new(
       api_token: ENV['LAYER_API_TOKEN'],
       app_id: ENV['LAYER_APP_ID']
     )
@@ -27,7 +27,7 @@ describe Layer::Api::Conversations do
         VCR.use_cassette('conversation') do
           expect {
             conversation = @layer.get_conversation("dontexist")
-          }.to raise_error(Layer::Api::NotFound)
+          }.to raise_error(Layer::Errors::NotFound)
         end
       end
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Resources::Announcement do
-  let(:client) { Layer::Api::Client.new }
+  let(:client) { Layer::Platform::Client.new }
 
   describe ".create" do
     it "should send an announcement" do
@@ -24,9 +24,9 @@ describe Layer::Resources::Announcement do
     end
 
     context "with invalid params" do
-      it "should raise Layer::Api::Error" do
+      it "should raise Layer::Error" do
         VCR.use_cassette("announcement_error") do
-          expect{client.announcements.create}.to raise_error(Layer::Api::Error)
+          expect{client.announcements.create}.to raise_error(Layer::Error)
         end
       end
     end

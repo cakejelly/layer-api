@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Resources::User do
-  let(:client) { Layer::Api::Client.new }
+  let(:client) { Layer::Platform::Client.new }
 
   describe ".find" do
     it "should return instance of User" do
@@ -10,7 +10,7 @@ describe Layer::Resources::User do
     end
 
     it "shouldn't send any request" do
-      expect(Layer::Api::HttpClient).to_not receive(:find)
+      expect(Layer::HttpClient).to_not receive(:find)
       client.users.find("jake")
     end
   end
@@ -18,14 +18,14 @@ describe Layer::Resources::User do
   describe "#blocks" do
     it "should instantiate new ResourceProxy" do
       user = client.users.find("jake")
-      expect(user.blocks).to be_instance_of(Layer::Api::ResourceProxy)
+      expect(user.blocks).to be_instance_of(Layer::ResourceProxy)
     end
   end
 
   describe "#conversations" do
     it "should instantiate new ResourceProxy" do
       user = client.users.find("jake")
-      expect(user.conversations).to be_instance_of(Layer::Api::ResourceProxy)
+      expect(user.conversations).to be_instance_of(Layer::ResourceProxy)
     end
   end
 end

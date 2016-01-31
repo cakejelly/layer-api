@@ -1,13 +1,13 @@
-require 'spec_helper'
 
-describe Layer::Api::IdentityToken do
+
+describe Layer::IdentityToken do
   describe ".new" do
     it "should allow you to set the user_id, nonce and expires_at variables" do
       user_id = "1234"
       nonce = "your_random_nonce"
       expires_at = "12345678"
 
-      token = Layer::Api::IdentityToken.new(
+      token = Layer::IdentityToken.new(
         user_id: user_id,
         nonce: nonce,
         expires_at: expires_at
@@ -21,21 +21,21 @@ describe Layer::Api::IdentityToken do
 
   describe ".layer_key_id" do
     it "should return your ENV['LAYER_KEY_ID']" do
-      layer_key_id = Layer::Api::IdentityToken.new.layer_key_id
+      layer_key_id = Layer::IdentityToken.new.layer_key_id
       expect(layer_key_id).to eq(ENV['LAYER_KEY_ID'])
     end
   end
 
   describe ".layer_provider_id" do
     it "should return your ENV['LAYER_PROVIDER_ID']" do
-      provider_id = Layer::Api::IdentityToken.new.layer_provider_id
+      provider_id = Layer::IdentityToken.new.layer_provider_id
       expect(provider_id).to eq(ENV['LAYER_PROVIDER_ID'])
     end
   end
 
   describe ".headers" do
     it "should return necessary headers" do
-      token = Layer::Api::IdentityToken.new
+      token = Layer::IdentityToken.new
 
       headers = token.send(:headers)
 
@@ -47,7 +47,7 @@ describe Layer::Api::IdentityToken do
 
   describe ".claim" do
     it "should return necessary payload" do
-      token = Layer::Api::IdentityToken.new(
+      token = Layer::IdentityToken.new(
         user_id: "user_id",
         nonce: "nonce",
         expires_at: 1234567
@@ -64,14 +64,14 @@ describe Layer::Api::IdentityToken do
 
   describe ".private_key" do
     it "should return valid rsa private key" do
-      key = Layer::Api::IdentityToken.new.send(:private_key)
+      key = Layer::IdentityToken.new.send(:private_key)
       expect(key).to be_instance_of(OpenSSL::PKey::RSA)
     end
   end
 
   describe ".to_s" do
     it "should return a string representation of the identity token" do
-      token = Layer::Api::IdentityToken.new.to_s
+      token = Layer::IdentityToken.new.to_s
       expect(token).to be_instance_of(String)
     end
   end
@@ -81,8 +81,8 @@ describe Layer::Api::IdentityToken do
       options = {}
       options[:user_id] = "user_id"
       options[:nonce] = "user_id"
-      layer = Layer::Api::Client.new
-      expected_token = Layer::Api::IdentityToken.new(options).to_s
+      layer = Layer::Platform::Client.new
+      expected_token = Layer::IdentityToken.new(options).to_s
       actual_token = layer.generate_identity_token(options)
 
       expect(actual_token).to eq(expected_token)

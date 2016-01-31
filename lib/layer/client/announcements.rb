@@ -6,7 +6,7 @@ module Layer
       end
 
       def announcements
-        Layer::Api::ResourceProxy.new(nil, Layer::Resources::Announcement)
+        Layer::ResourceProxy.new(nil, Layer::Resources::Announcement)
       end
     end
   end

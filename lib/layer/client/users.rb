@@ -15,7 +15,7 @@ module Layer
       end
 
       def users
-        Layer::Api::ResourceProxy.new(nil, Layer::Resources::User)
+        Layer::ResourceProxy.new(nil, Layer::Resources::User)
       end
     end
   end

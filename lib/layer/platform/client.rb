@@ -1,10 +1,9 @@
-require "layer/api/client/conversations"
-require "layer/api/client/announcements"
-require "layer/api/client/users"
-require "layer/api/client/identity_token"
+require "layer/client/conversations"
+require "layer/client/announcements"
+require "layer/client/users"
 
 module Layer
-  module Api
+  module Platform
     class Client
       include Layer::Api::Conversations
       include Layer::Api::Announcements
@@ -19,7 +18,7 @@ module Layer
       end
 
       def client
-        @http_client ||= HttpClient.new(app_id, api_token)
+        @http_client ||= Layer::HttpClient.new(app_id, api_token)
       end
 
       def get(url, *args)
@@ -44,6 +43,10 @@ module Layer
 
       def strip_layer_prefix(string)
         string.split("/").last if string
+      end
+
+      def generate_identity_token(options = {})
+        Layer::IdentityToken.new(options).to_s
       end
     end
   end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Resources::Message do
-  let(:client) { Layer::Api::Client.new }
+  let(:client) { Layer::Platform::Client.new }
 
   describe ".create" do
     it "should send a message to a conversation" do
@@ -25,14 +25,14 @@ describe Layer::Resources::Message do
     end
 
     context "with invalid params" do
-      it "should raise Layer::Api::Error" do
+      it "should raise Layer::Error" do
         VCR.use_cassette("conversation") do
           conversation = client.conversations.create(conversation_params)
 
           VCR.use_cassette("message_error", exclusive: true) do
             expect{
               conversation.messages.create
-            }.to raise_error(Layer::Api::Error)
+            }.to raise_error(Layer::Error)
           end
         end
       end

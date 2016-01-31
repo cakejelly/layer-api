@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Layer::Api::HttpClient do
+describe Layer::HttpClient do
 
   before do
-    @layer = Layer::Api::Client.new
+    @layer = Layer::Platform::Client.new
     @client = @layer.client
     @default_headers = @client.default_layer_headers.reject{|k, v| k == 'If-None-Match'}
   end
@@ -26,7 +26,7 @@ describe Layer::Api::HttpClient do
     it "should use custom api errors middleware" do
       conn = @client.connection
 
-      api_errors = Layer::Api::Middleware::ApiErrors
+      api_errors = Layer::Middleware::ApiErrors
       expect(conn.builder.handlers).to include(api_errors)
     end
 
@@ -102,7 +102,7 @@ describe Layer::Api::HttpClient do
   describe ".default_layer_headers" do
     it "should pass api_token into Authorization header" do
       api_token = "1234"
-      layer = Layer::Api::Client.new(api_token: api_token)
+      layer = Layer::Platform::Client.new(api_token: api_token)
 
       expect(layer.client.default_layer_headers['Authorization']).to include(api_token)
     end
@@ -111,7 +111,7 @@ describe Layer::Api::HttpClient do
   describe ".base_url" do
     it "should contain app_id" do
       app_id = "1234"
-      layer = Layer::Api::Client.new(app_id: app_id)
+      layer = Layer::Platform::Client.new(app_id: app_id)
       expect(layer.client.base_url).to include(app_id)
     end
   end

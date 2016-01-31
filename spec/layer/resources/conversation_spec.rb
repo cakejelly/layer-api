@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Resources::Conversation do
-  let(:client) { Layer::Api::Client.new }
+  let(:client) { Layer::Platform::Client.new }
 
   describe ".create" do
     context "with valid params" do
@@ -26,9 +26,9 @@ describe Layer::Resources::Conversation do
     end
 
     context "with invalid params" do
-      it "should raise Layer::Api::Error" do
+      it "should raise Layer::Error" do
         VCR.use_cassette("conversation_error") do
-          expect{client.conversations.create}.to raise_error(Layer::Api::Error)
+          expect{client.conversations.create}.to raise_error(Layer::Error)
         end
       end
     end
@@ -90,7 +90,7 @@ describe Layer::Resources::Conversation do
         VCR.use_cassette("conversation_destroyed", exclusive: true) do
           expect {
             removed_conv = client.conversations.find(client.strip_layer_prefix(conversation.id))
-          }.to raise_error(Layer::Api::Error)
+          }.to raise_error(Layer::Error)
         end
       end
     end
@@ -101,7 +101,7 @@ describe Layer::Resources::Conversation do
       VCR.use_cassette("conversation") do
         conversation = client.conversations.create(conversation_params)
 
-        expect(conversation.messages).to be_instance_of(Layer::Api::ResourceProxy)
+        expect(conversation.messages).to be_instance_of(Layer::ResourceProxy)
       end
     end
   end

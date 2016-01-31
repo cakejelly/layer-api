@@ -1,6 +1,6 @@
 module Layer
   module Resources
-    class Block < Layer::Api::Resource
+    class Block < Layer::Resource
       def self.list(url, params = {})
         collection = client.get(url, body: params.to_json)
 

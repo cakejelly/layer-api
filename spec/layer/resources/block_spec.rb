@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Layer::Resources::Block do
-  let(:client) { Layer::Api::Client.new }
+  let(:client) { Layer::Platform::Client.new }
 
   describe ".create" do
     it "should add new blocked user to the owners block list" do
@@ -25,13 +25,13 @@ describe Layer::Resources::Block do
     end
 
     context "with invalid params" do
-      it "should raise Layer::Api::Error" do
+      it "should raise Layer::Error" do
         VCR.use_cassette("block_error") do
           owner = client.users.find("owner")
 
           expect {
             owner.blocks.create
-          }.to raise_error(Layer::Api::Error)
+          }.to raise_error(Layer::Error)
         end
       end
     end

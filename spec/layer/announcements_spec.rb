@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Layer::Api::Announcements do
   before do
-    @layer = Layer::Api::Client.new(
+    @layer = Layer::Platform::Client.new(
       api_token: ENV['LAYER_API_TOKEN'],
       app_id: ENV['LAYER_APP_ID']
     )

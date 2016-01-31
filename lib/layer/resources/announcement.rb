@@ -1,6 +1,6 @@
 module Layer
   module Resources
-    class Message < Layer::Api::Resource
+    class Announcement < Layer::Resource
     end
   end
 end

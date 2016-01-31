@@ -2,22 +2,20 @@ require 'faraday'
 require 'json'
 require 'jwt'
 
-require "layer/api/version"
-require "layer/api/http_client"
-require "layer/api/client"
-require "layer/api/error"
-require "layer/api/resource"
-require "layer/api/resource_proxy"
+require "layer/version"
+require "layer/http_client"
+require "layer/error"
+require "layer/resource"
+require "layer/resource_proxy"
+require "layer/identity_token"
 
-require "layer/api/resources/conversation"
-require "layer/api/resources/message"
-require "layer/api/resources/announcement"
-require "layer/api/resources/user"
-require "layer/api/resources/block"
+# Platform
+require "layer/platform/client"
 
-require "layer/api/middleware/api_errors"
+require "layer/resources/conversation"
+require "layer/resources/message"
+require "layer/resources/announcement"
+require "layer/resources/user"
+require "layer/resources/block"
 
-module Layer
-  module Api
-  end
-end
+require "layer/middleware/api_errors"
