@@ -66,6 +66,8 @@ module Layer
 
         if collection.any?
           collection.map{ |resource| new(resource) }
+        else
+          []
         end
       end
     end

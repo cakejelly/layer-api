@@ -54,6 +54,15 @@ describe Layer::Resources::Message do
         end
       end
 
+      it "should return empty collection if non found" do
+        VCR.use_cassette("conversation_no_messages") do
+          conversation = client.conversations.create(conversation_params.merge({distinct: false}))
+
+          messages = conversation.messages.list
+          expect(messages).to eq([])
+        end
+      end
+
       it "should return a collection of Message objects" do
         VCR.use_cassette("conversation_messages") do
           conversation = client.conversations.create(conversation_params)
