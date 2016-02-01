@@ -4,7 +4,7 @@ require 'jwt'
 
 require "layer/version"
 require "layer/http_client"
-require "layer/error"
+require "layer/errors"
 require "layer/resource"
 require "layer/resource_proxy"
 require "layer/identity_token"
@@ -12,6 +12,7 @@ require "layer/identity_token"
 # Platform
 require "layer/platform/client"
 
+# Resources
 require "layer/resources/conversation"
 require "layer/resources/message"
 require "layer/resources/announcement"
