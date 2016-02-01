@@ -5,7 +5,7 @@ describe Layer::Resources::Announcement do
 
   describe ".create" do
     it "should send an announcement" do
-      VCR.use_cassette("announcement") do
+      VCR.use_cassette("announcement_create") do
         announcement = client.announcements.create(announcement_params)
 
         expect(announcement.id).to_not be_nil

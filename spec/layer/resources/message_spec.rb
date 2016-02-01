@@ -5,7 +5,7 @@ describe Layer::Resources::Message do
 
   describe ".create" do
     it "should send a message to a conversation" do
-      VCR.use_cassette("conversation") do
+      VCR.use_cassette("conversation_message") do
         conversation = client.conversations.create(conversation_params)
         message = conversation.messages.create(message_params)
 
@@ -16,7 +16,7 @@ describe Layer::Resources::Message do
     end
 
     it "should instantiate a Message" do
-      VCR.use_cassette("conversation") do
+      VCR.use_cassette("conversation_message") do
         conversation = client.conversations.create(conversation_params)
         message = conversation.messages.create(message_params)
 

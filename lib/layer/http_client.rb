@@ -33,7 +33,7 @@ module Layer
     end
 
     def delete(url)
-      call(:delete, url, options = {})
+      call(:delete, url)
     end
 
     def call(method, url, options = {})

@@ -58,9 +58,9 @@ describe Layer::HttpClient do
     end
 
     it "should use the http method that is supplied as a param" do
-      VCR.use_cassette('announcement') do
-        method = :post
-        request = @client.run_request(method, 'announcements', announcement_params)
+      VCR.use_cassette('announcement_different') do
+        method = :get
+        request = @client.run_request(method, 'users/test/blocks')
 
         expect(request.env.method).to eq(method)
       end
@@ -70,8 +70,8 @@ describe Layer::HttpClient do
   describe ".call" do
     it "should run request & return response body" do
       VCR.use_cassette('conversation') do
-        existing_conversation = @layer.create_conversation(conversation_params)
-        existing_id = @layer.get_stripped_id(existing_conversation["id"])
+        existing_conversation = @layer.conversations.create(conversation_params)
+        existing_id = @layer.get_stripped_id(existing_conversation.id)
 
         url = "#{@client.base_url}/conversations/#{existing_id}"
         body = @client.call(:get, url, conversation_params)
@@ -85,15 +85,15 @@ describe Layer::HttpClient do
 
     it "should run request & return nil if response has no body" do
       VCR.use_cassette('conversation') do
-        existing_conversation = @layer.create_conversation(conversation_params)
-        existing_conversation_id = @layer.get_stripped_id(existing_conversation["id"])
+        existing_conversation = @layer.conversations.create(conversation_params)
+        existing_conversation_id = @layer.get_stripped_id(existing_conversation.id)
 
         operations = [
           {operation: "add", property: "participants", value: "user1"},
           {operation: "add", property: "participants", value: "user2"}
         ]
 
-        response = @layer.edit_conversation(existing_conversation_id, operations)
+        response = @layer.conversations.find(existing_conversation_id).update(operations)
         expect(response).to be(nil)
       end
     end

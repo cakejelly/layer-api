@@ -7,7 +7,7 @@ describe Layer::Error do
         layer = Layer::Platform::Client.new
 
         expect {
-          layer.get_conversation("notfound")
+          layer.conversations.find("notfound")
         }.to raise_error(Layer::Errors::NotFound)
       end
     end

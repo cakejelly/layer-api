@@ -1,14 +1,6 @@
-require "layer/client/conversations"
-require "layer/client/announcements"
-require "layer/client/users"
-
 module Layer
   module Platform
     class Client
-      include Layer::Api::Conversations
-      include Layer::Api::Announcements
-      include Layer::Api::Users
-
       attr_accessor :api_token, :app_id
 
       def initialize(options = {})
@@ -43,6 +35,22 @@ module Layer
 
       def strip_layer_prefix(string)
         string.split("/").last if string
+      end
+
+      def announcements
+        Layer::ResourceProxy.new(nil, Layer::Resources::Announcement)
+      end
+
+      def conversations
+        Layer::ResourceProxy.new(nil, Layer::Resources::Conversation)
+      end
+
+      def users
+        Layer::ResourceProxy.new(nil, Layer::Resources::User)
+      end
+
+      def get_stripped_id(raw_id)
+        raw_id.sub("layer:///conversations/", "")
       end
 
       def generate_identity_token(options = {})
