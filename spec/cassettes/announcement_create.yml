@@ -16,7 +16,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - 07465044-f688-4363-8b24-db940abb103b
+      - b9752d4f-8a35-40ca-8e6a-e7d9a9d1cda9
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:25 GMT
+      - Tue, 02 Feb 2016 16:36:24 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -38,7 +38,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"url":"https://api.layer.com/apps/<APP_ID>/announcements/07465044-f688-4363-8b24-db940abb103b","sent_at":"2016-02-02T16:36:25.474Z","recipients":["1234","5678"],"id":"layer:///announcements/07465044-f688-4363-8b24-db940abb103b","sender":{"name":"The
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/announcements/b9752d4f-8a35-40ca-8e6a-e7d9a9d1cda9","sent_at":"2016-02-02T16:36:24.953Z","recipients":["1234","5678"],"id":"layer:///announcements/b9752d4f-8a35-40ca-8e6a-e7d9a9d1cda9","sender":{"name":"The
         System"},"parts":[{"mime_type":"text/plain","body":"Hello, World!"},{"mime_type":"image/jpeg","body":"any
         carnal pleasure"}]}'
     http_version: 

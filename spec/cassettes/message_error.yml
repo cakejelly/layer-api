@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.layer.com/apps/<APP_ID>/announcements
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/0fea1717-9240-479b-b06c-73e5c97c8030/messages
     body:
       encoding: UTF-8
       string: "{}"
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - 6e273faf-7ad3-4406-85cb-acc00cfd7948
+      - 3c60e454-5038-423f-bfd5-7e1694f1bbe2
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -27,17 +27,17 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:25 GMT
+      - Tue, 02 Feb 2016 16:36:34 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '178'
+      - '170'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"url":"https://developer.layer.com/docs/platform","data":{"property":"recipients"},"code":104,"id":"missing_property","message":"Object
-        is missing required member ''recipients''"}'
+      string: '{"url":"https://developer.layer.com/docs/platform","data":{"property":"sender"},"code":104,"id":"missing_property","message":"Object
+        is missing required member ''sender''"}'
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:26 GMT
+  recorded_at: Tue, 02 Feb 2016 16:36:34 GMT
 recorded_with: VCR 2.9.3

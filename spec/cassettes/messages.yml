@@ -1,0 +1,255 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - dc67aa39-8552-4caa-90bb-c4fef14036ea
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:35 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '617'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"url":"https://api.layer.com/apps/<APP_ID>/messages/dc67aa39-8552-4caa-90bb-c4fef14036ea","sent_at":"2016-02-02T16:36:35.589Z","id":"layer:///messages/dc67aa39-8552-4caa-90bb-c4fef14036ea","recipient_status":{"5678":"sent","1234":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"any carnal pleasure"}]}'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:35 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - afcf3184-163a-4a49-af76-c41f5902f7b0
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:36 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '617'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"url":"https://api.layer.com/apps/<APP_ID>/messages/afcf3184-163a-4a49-af76-c41f5902f7b0","sent_at":"2016-02-02T16:36:36.123Z","id":"layer:///messages/afcf3184-163a-4a49-af76-c41f5902f7b0","recipient_status":{"5678":"sent","1234":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"any carnal pleasure"}]}'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:36 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - f60b1b7c-69e2-4713-bbfd-5c06325e9ee9
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:36 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '617'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"url":"https://api.layer.com/apps/<APP_ID>/messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9","sent_at":"2016-02-02T16:36:36.644Z","id":"layer:///messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9","recipient_status":{"5678":"sent","1234":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"any carnal pleasure"}]}'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:36 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - e42a9551-1168-4cb7-81d8-e867243022e8
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:37 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '2935'
+      Connection:
+      - keep-alive
+      Layer-Count:
+      - '3'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"layer:///messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9","receipts_url":null,"position":null,"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"parts":[{"id":"layer:///messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9/parts/0","mime_type":"text/plain","body":"Hello,
+        World!","encoding":null,"content":null},{"id":"layer:///messages/f60b1b7c-69e2-4713-bbfd-5c06325e9ee9/parts/1","mime_type":"image/jpeg","body":"any
+        carnal pleasure","encoding":null,"content":null}],"sent_at":"2016-02-02T16:36:36.644Z","received_at":null,"sender":{"user_id":null,"name":"t-bone"},"is_unread":null,"recipient_status":{"5678":"sent","1234":"sent"},"notification":null},{"id":"layer:///messages/afcf3184-163a-4a49-af76-c41f5902f7b0","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages/afcf3184-163a-4a49-af76-c41f5902f7b0","receipts_url":null,"position":null,"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"parts":[{"id":"layer:///messages/afcf3184-163a-4a49-af76-c41f5902f7b0/parts/0","mime_type":"text/plain","body":"Hello,
+        World!","encoding":null,"content":null},{"id":"layer:///messages/afcf3184-163a-4a49-af76-c41f5902f7b0/parts/1","mime_type":"image/jpeg","body":"any
+        carnal pleasure","encoding":null,"content":null}],"sent_at":"2016-02-02T16:36:36.123Z","received_at":null,"sender":{"user_id":null,"name":"t-bone"},"is_unread":null,"recipient_status":{"5678":"sent","1234":"sent"},"notification":null},{"id":"layer:///messages/dc67aa39-8552-4caa-90bb-c4fef14036ea","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages/dc67aa39-8552-4caa-90bb-c4fef14036ea","receipts_url":null,"position":null,"conversation":{"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958"},"parts":[{"id":"layer:///messages/dc67aa39-8552-4caa-90bb-c4fef14036ea/parts/0","mime_type":"text/plain","body":"Hello,
+        World!","encoding":null,"content":null},{"id":"layer:///messages/dc67aa39-8552-4caa-90bb-c4fef14036ea/parts/1","mime_type":"image/jpeg","body":"any
+        carnal pleasure","encoding":null,"content":null}],"sent_at":"2016-02-02T16:36:35.589Z","received_at":null,"sender":{"user_id":null,"name":"t-bone"},"is_unread":null,"recipient_status":{"5678":"sent","1234":"sent"},"notification":null}]'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:37 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/81555189-5413-4129-8dea-eac299ab8417/messages
+    body:
+      encoding: UTF-8
+      string: '{"sender":{"name":"t-bone"},"parts":[{"body":"Hello, World!","mime_type":"text/plain"},{"body":"YW55IGNhcm5hbCBwbGVhc3VyZQ==","mime_type":"image/jpeg","encoding":"base64"}],"notification":{"text":"This
+        is the alert text to include with the Push Notification.","sound":"chime.aiff"}}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - 0a5eceb5-fecf-4cd9-9122-d7b04f6f2336
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:39 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '617'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"conversation":{"id":"layer:///conversations/81555189-5413-4129-8dea-eac299ab8417","url":"https://api.layer.com/apps/<APP_ID>/conversations/81555189-5413-4129-8dea-eac299ab8417"},"url":"https://api.layer.com/apps/<APP_ID>/messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336","sent_at":"2016-02-02T16:36:39.419Z","id":"layer:///messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336","recipient_status":{"5678":"sent","1234":"sent"},"sender":{"name":"t-bone"},"parts":[{"mime_type":"text/plain","body":"Hello,
+        World!"},{"mime_type":"image/jpeg","body":"any carnal pleasure"}]}'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:39 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/81555189-5413-4129-8dea-eac299ab8417/messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - f7df5d0b-d8f5-4eb0-be7a-fb621be0ef91
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 02 Feb 2016 16:36:39 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '977'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"layer:///messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336","url":"https://api.layer.com/apps/<APP_ID>/conversations/81555189-5413-4129-8dea-eac299ab8417/messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336","receipts_url":null,"position":null,"conversation":{"id":"layer:///conversations/81555189-5413-4129-8dea-eac299ab8417","url":"https://api.layer.com/apps/<APP_ID>/conversations/81555189-5413-4129-8dea-eac299ab8417"},"parts":[{"id":"layer:///messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336/parts/0","mime_type":"text/plain","body":"Hello,
+        World!","encoding":null,"content":null},{"id":"layer:///messages/0a5eceb5-fecf-4cd9-9122-d7b04f6f2336/parts/1","mime_type":"image/jpeg","body":"any
+        carnal pleasure","encoding":null,"content":null}],"sent_at":"2016-02-02T16:36:39.419Z","received_at":null,"sender":{"user_id":null,"name":"t-bone"},"is_unread":null,"recipient_status":{"1234":"sent","5678":"sent"},"notification":null}'
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 16:36:40 GMT
+recorded_with: VCR 2.9.3
