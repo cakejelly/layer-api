@@ -62,6 +62,23 @@ describe Layer::Resource do
     end
   end
 
+  describe "#uuid" do
+    it "should return resource id without layer prefix" do
+      uuid = "7f4a44f2-8f98-4990-88ea-1b7e6c087d4b"
+      id = "layer:///conversations/#{uuid}"
+      resource = described_class.new({"id" => id})
+
+      expect(resource.uuid).to eq(uuid)
+      expect(resource.id).to eq(id)
+    end
+
+    it "should return nil if no id exists" do
+      resource = described_class.new({})
+
+      expect(resource.uuid).to be_nil
+    end
+  end
+
   describe "#method_missing" do
     context "when key exists in attributes" do
       it "should return the value for that key" do

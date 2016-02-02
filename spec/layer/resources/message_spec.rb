@@ -90,7 +90,7 @@ describe Layer::Resources::Message do
 
           VCR.use_cassette("messages", exclusive: true) do
             existing_msg = conv.messages.create(message_params)
-            msg = conv.messages.find(client.strip_layer_prefix(existing_msg.id))
+            msg = conv.messages.find(existing_msg.uuid)
 
             expect(msg).to_not be_nil
             expect(msg).to be_instance_of(described_class)

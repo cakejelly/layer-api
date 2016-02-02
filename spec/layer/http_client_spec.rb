@@ -71,7 +71,7 @@ describe Layer::HttpClient do
     it "should run request & return response body" do
       VCR.use_cassette('conversation') do
         existing_conversation = @layer.conversations.create(conversation_params)
-        existing_id = @layer.get_stripped_id(existing_conversation.id)
+        existing_id = existing_conversation.uuid
 
         url = "#{@client.base_url}/conversations/#{existing_id}"
         body = @client.call(:get, url, conversation_params)
@@ -86,7 +86,7 @@ describe Layer::HttpClient do
     it "should run request & return nil if response has no body" do
       VCR.use_cassette('conversation') do
         existing_conversation = @layer.conversations.create(conversation_params)
-        existing_conversation_id = @layer.get_stripped_id(existing_conversation.id)
+        existing_conversation_id = existing_conversation.uuid
 
         operations = [
           {operation: "add", property: "participants", value: "user1"},

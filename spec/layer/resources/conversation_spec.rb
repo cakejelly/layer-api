@@ -39,7 +39,7 @@ describe Layer::Resources::Conversation do
       it "should return the conversation" do
         VCR.use_cassette('conversation') do
           existing_conversation = client.conversations.create(conversation_params)
-          existing_id = client.get_stripped_id(existing_conversation.id)
+          existing_id = existing_conversation.uuid
           conversation = client.conversations.find(existing_id)
 
           expect(existing_conversation.id).to eq(conversation.id)
@@ -49,7 +49,7 @@ describe Layer::Resources::Conversation do
       it "should instantiate a Conversation" do
         VCR.use_cassette("conversation") do
           existing_conversation = client.conversations.create(conversation_params)
-          existing_id = client.get_stripped_id(existing_conversation.id)
+          existing_id = existing_conversation.uuid
           conversation = client.conversations.find(existing_id)
 
           expect(conversation).to be_instance_of(described_class)
@@ -62,7 +62,7 @@ describe Layer::Resources::Conversation do
     it "should update conversation" do
       VCR.use_cassette('conversation') do
         existing_conversation = client.conversations.create(conversation_params)
-        existing_conversation_id = client.get_stripped_id(existing_conversation.id)
+        existing_conversation_id = existing_conversation.uuid
         existing_participants = existing_conversation.participants
 
         operations = [

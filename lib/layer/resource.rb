@@ -7,10 +7,11 @@ module Layer
     end
 
     def update(params)
-      client.patch(url,
-                   body: params.to_json,
-                   headers: client.layer_patch_header
-                  )
+      client.patch(
+        url,
+        body: params.to_json,
+        headers: client.layer_patch_header
+      )
     end
 
     def destroy
@@ -29,6 +30,10 @@ module Layer
     def respond_to_missing?(method, include_private = false)
       method_key = method.to_s
       attributes.has_key?(method_key) ? true : false
+    end
+
+    def uuid
+      attributes["id"].split("/").last if attributes["id"]
     end
 
     class << self

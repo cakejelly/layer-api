@@ -49,10 +49,6 @@ module Layer
         Layer::ResourceProxy.new(nil, Layer::Resources::User)
       end
 
-      def get_stripped_id(raw_id)
-        raw_id.sub("layer:///conversations/", "")
-      end
-
       def generate_identity_token(options = {})
         Layer::IdentityToken.new(options).to_s
       end
