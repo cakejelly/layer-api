@@ -6,6 +6,8 @@ module Layer
       if klass = case status
                  when 400 then Layer::Errors::BadRequest
                  when 404 then Layer::Errors::NotFound
+                 when 409 then Layer::Errors::Conflict
+                 when 410 then Layer::Errors::ResourceDeleted
                  when 500..599 then Layer::Errors::ServerError
                  else self
                  end
@@ -35,5 +37,7 @@ module Layer
     class BadRequest < Error; end
     class NotFound < Error; end
     class ServerError < Error; end
+    class ResourceDeleted < Error; end
+    class Conflict < Error; end
   end
 end

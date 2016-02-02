@@ -3,13 +3,11 @@ require 'spec_helper'
 describe Layer::Error do
   describe ".from_response" do
     it 'should raise NotFound error when status is 404' do
-      VCR.use_cassette('conversation') do
-        layer = Layer::Platform::Client.new
+      response = {status: 404}
+      expect {
+        raise Layer::Error.from_response(response)
+      }.to raise_error(Layer::Errors::NotFound)
 
-        expect {
-          layer.conversations.find("notfound")
-        }.to raise_error(Layer::Errors::NotFound)
-      end
     end
 
     it "should raise BadRequest error when status is 400" do
@@ -17,6 +15,20 @@ describe Layer::Error do
       expect {
         raise Layer::Error.from_response(response)
       }.to raise_error(Layer::Errors::BadRequest)
+    end
+
+    it "should raise Conflict error when status is 409" do
+      response = {status: 409}
+      expect {
+        raise Layer::Error.from_response(response)
+      }.to raise_error(Layer::Errors::Conflict)
+    end
+
+    it "should raise ResourceDeleted error when status is 410" do
+      response = {status: 410}
+      expect {
+        raise Layer::Error.from_response(response)
+      }.to raise_error(Layer::Errors::ResourceDeleted)
     end
 
     (500..599).each do |error|
