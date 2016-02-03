@@ -2,7 +2,7 @@ module Layer
   module Resources
     class User < Layer::Resource
       def self.find(url, id)
-        new({"url" => "users/#{id}"})
+        new({"id" => id, "url" => "users/#{id}"})
       end
 
       def blocks

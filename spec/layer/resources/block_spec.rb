@@ -6,11 +6,12 @@ describe Layer::Resources::Block do
   describe ".create" do
     it "should add new blocked user to the owners block list" do
       VCR.use_cassette("block") do
-        owner = client.users.find("owner")
+        owner = client.users.find("tester")
 
-        block = owner.blocks.create(user_id: "block")
-
-        expect(block.url).to_not be_nil
+        expect {
+          block = owner.blocks.create(user_id: "block")
+          expect(block.url).to_not be_nil
+        }.to change{owner.blocks.list.count}.by(1)
       end
     end
 
@@ -32,6 +33,20 @@ describe Layer::Resources::Block do
           expect {
             owner.blocks.create
           }.to raise_error(Layer::Error)
+        end
+      end
+    end
+
+    context "when passing in a User object" do
+      it "should add this user to the owners block list" do
+        VCR.use_cassette("block_user") do
+          owner = client.users.find("tester2")
+          user = client.users.find("jake")
+
+          expect {
+            block = owner.blocks.create(user)
+            expect(block.url).to_not be_nil
+          }.to change{owner.blocks.list.count}.by(1)
         end
       end
     end

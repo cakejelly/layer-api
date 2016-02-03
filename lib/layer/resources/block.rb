@@ -12,8 +12,10 @@ module Layer
       end
 
       def self.create(url, params = {})
-        client.post(url, body: params.to_json)
-        new({"url" => "#{url}/#{params[:user_id]}"})
+        user_params = params.instance_of?(User) ? {user_id: params.id} : params
+
+        client.post(url, body: user_params.to_json)
+        new({"url" => "#{url}/#{user_params[:user_id]}"})
       end
     end
   end
