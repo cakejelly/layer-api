@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - b759106a-412b-4311-b833-e1bf119d5958
+      - 21a56cc4-76a5-4bc0-a934-e3e61e515614
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:35 GMT
+      - Wed, 03 Feb 2016 01:14:32 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -36,7 +36,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958","participants":["5678","1234"],"id":"layer:///conversations/b759106a-412b-4311-b833-e1bf119d5958","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-02T16:36:35.035Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/b759106a-412b-4311-b833-e1bf119d5958/messages"}'
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/21a56cc4-76a5-4bc0-a934-e3e61e515614","participants":["5678","1234"],"id":"layer:///conversations/21a56cc4-76a5-4bc0-a934-e3e61e515614","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-03T01:14:32.759Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/21a56cc4-76a5-4bc0-a934-e3e61e515614/messages"}'
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:35 GMT
+  recorded_at: Wed, 03 Feb 2016 01:14:32 GMT
 recorded_with: VCR 2.9.3

@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - 510ac7f2-92b4-4641-a09a-2af63f61f94c
+      - c719613b-5541-49cd-a517-686993bc36f3
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:37 GMT
+      - Wed, 03 Feb 2016 01:14:40 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -36,12 +36,12 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/510ac7f2-92b4-4641-a09a-2af63f61f94c","participants":["5678","1234"],"id":"layer:///conversations/510ac7f2-92b4-4641-a09a-2af63f61f94c","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-02T16:36:37.685Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/510ac7f2-92b4-4641-a09a-2af63f61f94c/messages"}'
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/c719613b-5541-49cd-a517-686993bc36f3","participants":["5678","1234"],"id":"layer:///conversations/c719613b-5541-49cd-a517-686993bc36f3","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-03T01:14:40.222Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/c719613b-5541-49cd-a517-686993bc36f3/messages"}'
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:37 GMT
+  recorded_at: Wed, 03 Feb 2016 01:14:40 GMT
 - request:
     method: get
-    uri: https://api.layer.com/apps/<APP_ID>/conversations/510ac7f2-92b4-4641-a09a-2af63f61f94c/messages
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/c719613b-5541-49cd-a517-686993bc36f3/messages
     body:
       encoding: UTF-8
       string: "{}"
@@ -53,7 +53,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - 15b6901d-d491-4dde-a1a0-843472f6f1e4
+      - 51e1f134-3948-4be3-8957-6ed0990c406f
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -66,7 +66,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:38 GMT
+      - Wed, 03 Feb 2016 01:14:41 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -79,5 +79,5 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:38 GMT
+  recorded_at: Wed, 03 Feb 2016 01:14:41 GMT
 recorded_with: VCR 2.9.3

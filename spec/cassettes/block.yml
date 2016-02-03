@@ -1,6 +1,45 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/owner/blocks
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - f4fa11cf-ba02-4cc4-8185-a61a6e7aae4b
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Wed, 03 Feb 2016 01:13:54 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '84'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":"block"},{"user_id":"block0"},{"user_id":"block2"},{"user_id":"block1"}]'
+    http_version: 
+  recorded_at: Wed, 03 Feb 2016 01:13:54 GMT
+- request:
     method: post
     uri: https://api.layer.com/apps/<APP_ID>/users/owner/blocks
     body:
@@ -14,7 +53,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - 273e567f-627e-41e6-b738-f80b7abdfc20
+      - df9985dd-4d14-437a-a6fe-f9d1947e2ce8
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -27,7 +66,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:26 GMT
+      - Wed, 03 Feb 2016 01:13:55 GMT
       Content-Length:
       - '0'
       Connection:
@@ -36,5 +75,159 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:26 GMT
+  recorded_at: Wed, 03 Feb 2016 01:13:55 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/owner/blocks
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - 10797f23-9a9e-4940-a59a-8e7335f99106
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Wed, 03 Feb 2016 01:13:55 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '84'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":"block"},{"user_id":"block0"},{"user_id":"block2"},{"user_id":"block1"}]'
+    http_version: 
+  recorded_at: Wed, 03 Feb 2016 01:13:55 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/tester/blocks
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - 102ea1c5-386b-44f3-815a-a47a117af6ca
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Wed, 03 Feb 2016 01:16:07 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Wed, 03 Feb 2016 01:16:08 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/users/tester/blocks
+    body:
+      encoding: UTF-8
+      string: '{"user_id":"block"}'
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - ec2bca47-f156-43cc-9278-65fc375970d6
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Wed, 03 Feb 2016 01:16:08 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Feb 2016 01:16:09 GMT
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/users/tester/blocks
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer+json; version=1.0
+      Authorization:
+      - Bearer <API_TOKEN>
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - e45eedd9-6bd4-4ef5-9c9d-c77847864cdf
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Wed, 03 Feb 2016 01:16:10 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '21'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":"block"}]'
+    http_version: 
+  recorded_at: Wed, 03 Feb 2016 01:16:10 GMT
 recorded_with: VCR 2.9.3

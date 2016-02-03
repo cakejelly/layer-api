@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.layer.com/apps/<APP_ID>/conversations/0fea1717-9240-479b-b06c-73e5c97c8030
+    uri: https://api.layer.com/apps/<APP_ID>/conversations/5bd4e054-c6ad-49df-8a14-ace1594e8468
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       If-None-Match:
-      - b4ef6ac5-85b9-43dc-8da6-4a7f6fe8b573
+      - 4da7949e-6f1b-4dbd-b929-48cadb7df116
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Tue, 02 Feb 2016 16:36:31 GMT
+      - Wed, 03 Feb 2016 01:14:12 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -36,7 +36,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/0fea1717-9240-479b-b06c-73e5c97c8030","participants":["1234","5678","user2","user1"],"id":"layer:///conversations/0fea1717-9240-479b-b06c-73e5c97c8030","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-02T16:36:23.252Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/0fea1717-9240-479b-b06c-73e5c97c8030/messages"}'
+      string: '{"url":"https://api.layer.com/apps/<APP_ID>/conversations/5bd4e054-c6ad-49df-8a14-ace1594e8468","participants":["1234","5678","user2","user1"],"id":"layer:///conversations/5bd4e054-c6ad-49df-8a14-ace1594e8468","distinct":false,"metadata":{"background_color":"#3c3c3c"},"created_at":"2016-02-03T01:13:49.023Z","messages_url":"https://api.layer.com/apps/<APP_ID>/conversations/5bd4e054-c6ad-49df-8a14-ace1594e8468/messages"}'
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 16:36:32 GMT
+  recorded_at: Wed, 03 Feb 2016 01:14:12 GMT
 recorded_with: VCR 2.9.3
