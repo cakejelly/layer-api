@@ -1,7 +1,7 @@
-# Layer::Api #
+# Layer API Ruby Client
 [![Build Status](https://travis-ci.org/cakejelly/layer-api.svg?branch=master)](https://travis-ci.org/cakejelly/layer-api) [![Gem Version](https://badge.fury.io/rb/layer-api.svg)](http://badge.fury.io/rb/layer-api)
 
-A very simple wrapper for the Layer Platform API.
+A very simple wrapper for Layer's Web API's
 
 If you want to learn more, check out the [official documentation](https://developer.layer.com/docs/platform).
 
@@ -27,16 +27,37 @@ Or install it yourself as:
 
 ## Usage
 
+### Resources
+All client methods return  `Resource` objects or a collection of `Resource` objects. Every attribute from a resource can be accessed calling attribute methods:
+
+```ruby
+conversation = platform.conversations.find("fb2f3a48-523d-4449-a57f-c6651fc6612c")
+#<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
+
+# Get the stripped uuid for any resource
+conversation.uuid
+# => "fb2f3a48-523d-4449-a57f-c6651fc6612c"
+
+conversation.url
+# => "https://api.layer.com/apps/<APP_ID>/conversations/fb2f3a48-523d-4449-a57f-c6651fc6612c"
+
+# Retrieve all attributes
+conversation.attributes
+# => {"id" => "fb2f3a48-523d-4449-a57f-c6651fc6612c", "url" => "https://api.layer.com/apps/<APP_ID>/conversations/fb2f3a48-523d-4449-a57f-c6651fc6612c", ...}
+```
+
 ### [Platform API](https://developer.layer.com/docs/platform)
 
 #### Authentication/setup
 
 ```ruby
 platform = Layer::Platform::Client.new(api_token: "your_api_token", app_id: "your_app_id")
+# => #<Layer::Platform::Client:0x007fdb19844f30 @api_token="...", @app_id="...">
 ```
-If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default don't need to be included:
+If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default and don't need to be included:
 ```ruby
 platform = Layer::Platform::Client.new
+# => #<Layer::Platform::Client:0x007fdb19844f30 @api_token="...", @app_id="...">
 ```
 
 #### Retrieving Conversations ####
@@ -44,6 +65,8 @@ platform = Layer::Platform::Client.new
 ```ruby
 user = platform.users.find("user_id")
 convs = user.conversations.list
+# => [#<Layer::Resources::Conversation>, #<Layer::Resources::Conversation>, ...]
+
 ```
 
 #### Retrieving A Single Conversation ####
@@ -52,12 +75,14 @@ convs = user.conversations.list
 # For a user
 user = platform.users.find("user_id")
 conv = user.conversations.find("conversation_id")
+# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
 
 # or alternatively
 conv = platform.conversations.find("conversation_id")
+# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
 ```
 
-#### Creating conversations ####
+#### Creating Conversations ####
 
 ```ruby
 conversation = {
@@ -72,9 +97,10 @@ conversation = {
 }
 
 platform.conversations.create(conversation)
+# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
 ```
 
-#### Editing conversations ####
+#### Editing Conversations ####
 
 ```ruby
 conv = platform.conversations.find("conversation_id")
@@ -85,12 +111,15 @@ operations = [
 ]
 
 conv.update(operations)
+# => nil
 ```
 #### Deleting Conversations ####
 
 ```ruby
 conv = platform.conversations.find("conversation_id")
 conv.destroy
+# => nil
+
 ```
 
 #### Sending Messages ####
@@ -119,7 +148,7 @@ message = {
 
 conv = platform.conversations.find("conversation_id")
 conv.messages.create(message)
-
+# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
 ```
 
 #### Retrieving Messages ####
@@ -128,10 +157,12 @@ conv.messages.create(message)
 # From a specific user's perspective
 conv = platform.users.find("user_id").conversations.find("conversation_id")
 conv.messages.list
+# => [#<Layer::Resources::Message>, #<Layer::Resources::Message>, ...]
 
 # From the system's perspective
 conv = platform.conversations.find("conversation_id")
 conv.messages.list
+# => [#<Layer::Resources::Message>, #<Layer::Resources::Message>, ...]
 ```
 
 #### Retrieving A Single Message ####
@@ -140,10 +171,12 @@ conv.messages.list
 # From a specific user's perspective
 user = platform.users.find("user_id")
 messages = user.messages.find("message_id")
+# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
 
 # From the systems perspective
 conv = platform.conversations.find("conversation_id")
 messages = conv.messages.find("message_id")
+# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
 ```
 
 #### Sending Announcements ####
@@ -167,6 +200,7 @@ announcement = {
 }
 
 platform.announcements.create(announcement)
+# => #<Layer::Resources::Announcement:0x007fdb18b44bf0 @attributes={...}>
 ```
 
 #### Modifying A Users Block List ####
@@ -181,13 +215,16 @@ operations = [
 ]
 
 user.update(operations)
+# => nil
 ```
 
 #### Retrieving A Users Block List
 
 ```ruby
 user = platform.users.find("user_id")
+
 blocks = user.blocks.list
+# => [#<Layer::Resources::Block @attributes={...}>, [#<Layer::Resources::Block @attributes={...}>, ...]
 ```
 
 #### Blocking Users
@@ -196,12 +233,14 @@ blocks = user.blocks.list
 # using params
 owner = platform.users.find("owner")
 owner.blocks.create(user_id: "blocked")
+# => #<Layer::Resources::Block @attributes={...}>
 
 # passing a User object
 owner = platform.users.find("owner")
 blocked = platform.users.find("blocked")
 
 owner.blocks.create(blocked)
+# => #<Layer::Resources::Block @attributes={...}>
 ```
 
 #### Unblocking Users
@@ -211,11 +250,14 @@ owner.blocks.create(blocked)
 # using the blocked users id
 owner = platform.users.find("owner")
 owner.blocks.find("blocked_user").destroy
+# => nil
 
 # using a User object
 owner = platform.users.find("owner")
 blocked = platform.users.find("blocked")
+
 owner.blocks.find(blocked).destroy
+# => nil
 ```
 
 #### Generating Identity Tokens ####
@@ -228,7 +270,11 @@ Make sure the following environment variables are set:
 
 ```ruby
 # Returns a valid signed identity token. #
-platform.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+token = platform.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+# => #<Layer::IdentityToken:0x007f89b4adb890
+
+token.to_s
+# => "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsInR.cCI6IkpXVCIsImN0eSI6ImxheWVyLWVpdDt2PTEiLCJraWQiOiJhNz.5YTE0MC02YzY3LTExZTUtYjM0Mi1jZGJmNDAwZTE5NDgifQ"
 ```
 
 ## Development ##

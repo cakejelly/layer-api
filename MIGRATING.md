@@ -176,7 +176,7 @@ In `0.4`:
 
 ```ruby
 owner = layer.users.find("owner_id")
-owner.blocks.create("user_id")
+owner.blocks.create(user_id: "user_id")
 ```
 
 ## Remove a user from another users block list
@@ -194,4 +194,19 @@ block = layer.users.find("owner_id").blocks.find("user_id")
 block.destroy
 
 
+```
+
+## Generating identity tokens
+
+In `0.3.x`:
+
+```ruby
+layer.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+```
+
+In `0.4.`:
+
+```ruby
+token = layer.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+token.to_s
 ```
