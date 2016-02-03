@@ -5,6 +5,9 @@ A very simple wrapper for the Layer Platform API.
 
 If you want to learn more, check out the [official documentation](https://developer.layer.com/docs/platform).
 
+## Migrating from 0.3.x
+Version 0.4 is not compatible with older versions. SEE [MIGRATING](MIGRATING.md) for details on how to migrate your code to the latest version.
+
 ## Installation ##
 
 Add this line to your application's Gemfile:
