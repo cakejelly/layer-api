@@ -12,6 +12,10 @@ module Layer
       def conversations
         Layer::ResourceProxy.new(self, Layer::Resources::Conversation)
       end
+
+      def messages
+        Layer::ResourceProxy.new(self, Layer::Resources::Message)
+      end
     end
   end
 end
