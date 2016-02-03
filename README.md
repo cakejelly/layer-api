@@ -47,6 +47,7 @@ conversation.attributes
 ```
 
 ### [Platform API](https://developer.layer.com/docs/platform)
+See the official [Platform API docs](https://developer.layer.com/docs/platform) for additional info.
 
 #### Authentication/setup
 

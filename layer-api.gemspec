@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["jake.kelly10@gmail.com"]
   spec.license       = "MIT"
 
-  spec.summary       = "A ruby toolkit for Layer's Platform API (https://developer.layer.com/docs/platform)"
-  spec.description   = "Simple wrapper for the Layer Platform API"
+  spec.summary       = "A ruby toolkit for Layer's Web API's (https://developer.layer.com/docs)"
+  spec.description   = "Simple wrapper for the Layer's Web API's"
   spec.homepage      = "https://github.com/cakejelly/layer-api"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
