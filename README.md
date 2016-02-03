@@ -1,13 +1,11 @@
-# Layer::Api
+# Layer::Api #
 [![Build Status](https://travis-ci.org/cakejelly/layer-api.svg?branch=master)](https://travis-ci.org/cakejelly/layer-api) [![Gem Version](https://badge.fury.io/rb/layer-api.svg)](http://badge.fury.io/rb/layer-api)
 
 A very simple wrapper for the Layer Platform API.
 
 If you want to learn more, check out the [official documentation](https://developer.layer.com/docs/platform).
 
-See [here](https://github.com/cakejelly/ruby-platform-implementation) for a sample API implementation using this gem and [Grape](https://github.com/intridea/grape)
-
-## Installation
+## Installation ##
 
 Add this line to your application's Gemfile:
 
@@ -23,31 +21,42 @@ Or install it yourself as:
 
     $ gem install layer-api
 
+
 ## Usage
 
-### Authentication/setup
+### [Platform API](https://developer.layer.com/docs/platform)
+
+#### Authentication/setup
 
 ```ruby
-layer = Layer::Api::Client.new(
-  api_token: "your_api_token",
-  app_id: "your_app_id"
-)
+platform = Layer::Platform::Client.new(api_token: "your_api_token", app_id: "your_app_id")
 ```
 If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default don't need to be included:
 ```ruby
-layer = Layer::Api::Client.new
+platform = Layer::Platform::Client.new
 ```
 
-### Retrieving conversations
+#### Retrieving Conversations ####
 
 ```ruby
-layer.get_conversation("conversation_id")
+user = platform.users.find("user_id")
+convs = user.conversations.list
 ```
 
-### Creating conversations
+#### Retrieving A Single Conversation ####
 
 ```ruby
-# A sample conversation
+# For a user
+user = platform.users.find("user_id")
+conv = user.conversations.find("conversation_id")
+
+# or alternatively
+conv = platform.conversations.find("conversation_id")
+```
+
+#### Creating conversations ####
+
+```ruby
 conversation = {
   participants: [
     "1234",
@@ -59,24 +68,31 @@ conversation = {
   }
 }
 
-layer.create_conversation(conversation)
+platform.conversations.create(conversation)
 ```
 
-### Editing conversations
+#### Editing conversations ####
 
 ```ruby
-# Sample edit operations
+conv = platform.conversations.find("conversation_id")
+
 operations = [
-  {operation: "add", property: "participants", value: "user1"},
-  {operation: "add", property: "participants", value: "user2"}
+  { operation: "add", property: "participants", value: "user1" },
+  { operation: "add", property: "participants", value: "user2" }
 ]
 
-layer.edit_conversation("conversation_id", operations)
+conv.update(operations)
+```
+#### Deleting Conversations ####
+
+```ruby
+conv = platform.conversations.find("conversation_id")
+conv.destroy
 ```
 
-### Sending messages
+#### Sending Messages ####
+
 ```ruby
-# A sample message to send
 message = {
   sender: {
     name: "t-bone"
@@ -98,14 +114,38 @@ message = {
   }
 }
 
-layer.send_message("conversation_id", message)
+conv = platform.conversations.find("conversation_id")
+conv.messages.create(message)
 
 ```
 
-### Sending Announcements
+#### Retrieving Messages ####
 
 ```ruby
-# A sample announcement
+# From a specific user's perspective
+conv = platform.users.find("user_id").conversations.find("conversation_id")
+conv.messages.list
+
+# From the system's perspective
+conv = platform.conversations.find("conversation_id")
+conv.messages.list
+```
+
+#### Retrieving A Single Message ####
+
+```ruby
+# From a specific user's perspective
+user = platform.users.find("user_id")
+messages = user.messages.find("message_id")
+
+# From the systems perspective
+conv = platform.conversations.find("conversation_id")
+messages = conv.messages.find("message_id")
+```
+
+#### Sending Announcements ####
+
+```ruby
 announcement = {
   recipients: [ "1234", "5678" ],
   sender: {
@@ -115,11 +155,6 @@ announcement = {
     {
         body: "Hello, World!",
         mime_type: "text/plain"
-    },
-    {
-        body: "YW55IGNhcm5hbCBwbGVhc3VyZQ==",
-        mime_type: "image/jpeg",
-        encoding: "base64"
     }
   ],
   notification: {
@@ -128,23 +163,59 @@ announcement = {
   }
 }
 
-layer.send_announcement(announcement)
+platform.announcements.create(announcement)
 ```
 
-### Managing User Block Lists
+#### Modifying A Users Block List ####
 
 ```ruby
-# Retrieves a users blocklist
-layer.get_blocklist("user_id")
+user = platform.users.find("user_id")
 
-# Adds a user to another users blocklist
-layer.block_user("owner_id", "user_id")
+operations = [
+    { operation: "add", property: "blocks", value: "blockMe1" },
+    { operation: "add", property: "blocks", value: "blockMe2" },
+    { operation: "remove", property: "blocks", value: "unblockMe" }
+]
 
-# Removes a user from another users blocklist
-layer.unblock_user("owner_id", "user_id")
+user.update(operations)
 ```
 
-### Generating Identity Tokens
+#### Retrieving A Users Block List
+
+```ruby
+user = platform.users.find("user_id")
+blocks = user.blocks.list
+```
+
+#### Blocking Users
+
+```ruby
+# using params
+owner = platform.users.find("owner")
+owner.blocks.create(user_id: "blocked")
+
+# passing a User object
+owner = platform.users.find("owner")
+blocked = platform.users.find("blocked")
+
+owner.blocks.create(blocked)
+```
+
+#### Unblocking Users
+
+```ruby
+
+# using the blocked users id
+owner = platform.users.find("owner")
+owner.blocks.find("blocked_user").destroy
+
+# using a User object
+owner = platform.users.find("owner")
+blocked = platform.users.find("blocked")
+owner.blocks.find(blocked).destroy
+```
+
+#### Generating Identity Tokens ####
 See: [the official authentication guide](https://developer.layer.com/docs/android/guides#authentication)
 
 Make sure the following environment variables are set:
@@ -153,16 +224,16 @@ Make sure the following environment variables are set:
 `ENV['LAYER_PRIVATE_KEY']`
 
 ```ruby
-# Returns a valid signed identity token.
-layer.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
+# Returns a valid signed identity token. #
+platform.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
 ```
 
-## Development
+## Development ##
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
+## Contributing ##
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/cakejelly/layer-api.
