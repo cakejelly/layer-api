@@ -50,10 +50,4 @@ module Layer
       OpenSSL::PKey::RSA.new(key.gsub!("\\n","\n"))
     end
   end
-
-  class Client
-    def generate_identity_token(options = {})
-      IdentityToken.new(options).to_s
-    end
-  end
 end

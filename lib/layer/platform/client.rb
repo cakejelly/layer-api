@@ -50,7 +50,7 @@ module Layer
       end
 
       def generate_identity_token(options = {})
-        Layer::IdentityToken.new(options).to_s
+        Layer::IdentityToken.new(options)
       end
     end
   end

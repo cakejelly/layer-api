@@ -77,15 +77,17 @@ describe Layer::IdentityToken do
   end
 
   describe ".generate_identity_token" do
-    it "should return the correct IdentityToken" do
+    it "should instantiate a new IdentityToken object" do
       options = {}
       options[:user_id] = "user_id"
       options[:nonce] = "user_id"
       layer = Layer::Platform::Client.new
-      expected_token = Layer::IdentityToken.new(options).to_s
+
+      expected_token = Layer::IdentityToken.new(options)
       actual_token = layer.generate_identity_token(options)
 
-      expect(actual_token).to eq(expected_token)
+      expect(actual_token).to be_instance_of(Layer::IdentityToken)
+      expect(expected_token.to_s).to eq(actual_token.to_s)
     end
   end
 end
