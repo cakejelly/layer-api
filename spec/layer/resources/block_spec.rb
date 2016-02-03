@@ -52,6 +52,34 @@ describe Layer::Resources::Block do
     end
   end
 
+  describe ".find" do
+    it "should return instance of Block" do
+      user = client.users.find("user")
+      block = user.blocks.find("blocked")
+
+      expect(block).to be_instance_of(described_class)
+    end
+
+    it "shouldn't send any request" do
+      user = client.users.find("user")
+
+      expect(Layer::HttpClient).to_not receive(:find)
+      user.blocks.find("blah")
+    end
+
+    context "when User object passed as param" do
+      it "should use the users id attribute when building instance url" do
+        owner = client.users.find("owner")
+        user = client.users.find("user")
+
+        block = owner.blocks.find(user)
+
+        expect(block).to be_instance_of(described_class)
+        expect(block.url).to eq("users/#{owner.id}/blocks/#{user.id}")
+      end
+    end
+  end
+
   describe ".list" do
     it "should return block list for a user" do
       VCR.use_cassette("blocks") do
