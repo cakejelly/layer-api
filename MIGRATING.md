@@ -28,7 +28,7 @@ In `0.3.x`, each function returned a Hash containing a parsed JSON representatio
 
 `0.4` introduced `Resource` - A base class used to encapsulate each JSON response.
 
-`Resource` can allow attributes to be accessed with dot notation. Alternatively, you can return a Hashed version of the resource using `Resource.attributes`. For example:
+`Resource` can allow attributes to be accessed by calling the attribute name on the instance. Alternatively, you can return a Hashed version of the resource using `Resource.attributes`. For example:
 
 ```ruby
 

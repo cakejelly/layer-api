@@ -28,7 +28,7 @@ Or install it yourself as:
 ## Usage
 
 ### Resources
-All client methods return  `Resource` objects or a collection of `Resource` objects. Every attribute from a resource can be accessed calling attribute methods:
+All client methods return  `Resource` objects or a collection of `Resource` objects. Every attribute from a resource can be accessed by calling attribute methods:
 
 ```ruby
 conversation = platform.conversations.find("fb2f3a48-523d-4449-a57f-c6651fc6612c")
