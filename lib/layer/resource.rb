@@ -2,8 +2,9 @@ module Layer
   class Resource
     attr_reader :attributes, :client
 
-    def initialize(attributes)
+    def initialize(attributes, client)
       @attributes = attributes
+      @client = client
     end
 
     def update(params)
@@ -47,19 +48,19 @@ module Layer
 
       def create(client, url, params = {})
         response = client.post(url, body: params.to_json)
-        new(response)
+        new(response, client)
       end
 
       def find(client, url, id)
         response = client.get("#{url}/#{id}")
-        new(response)
+        new(response, client)
       end
 
-      def list(url, params = {})
+      def list(client, url, params = {})
         collection = client.get(url, body: params.to_json)
 
         if collection.any?
-          collection.map{ |resource| new(resource) }
+          collection.map{ |resource| new(resource, client) }
         else
           []
         end
