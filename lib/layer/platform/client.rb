@@ -38,15 +38,15 @@ module Layer
       end
 
       def announcements
-        Layer::ResourceProxy.new(nil, Layer::Resources::Announcement)
+        Layer::ResourceProxy.new(client, nil, Layer::Resources::Announcement)
       end
 
       def conversations
-        Layer::ResourceProxy.new(nil, Layer::Resources::Conversation)
+        Layer::ResourceProxy.new(client, nil, Layer::Resources::Conversation)
       end
 
       def users
-        Layer::ResourceProxy.new(nil, Layer::Resources::User)
+        Layer::ResourceProxy.new(client, nil, Layer::Resources::User)
       end
 
       def generate_identity_token(options = {})

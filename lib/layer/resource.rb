@@ -18,10 +18,6 @@ module Layer
       client.delete(url)
     end
 
-    def client
-      self.class.client
-    end
-
     def method_missing(method, *args, &block)
       method_key = method.to_s
       attributes.has_key?(method_key) ? attributes[method_key] : super
@@ -49,19 +45,12 @@ module Layer
         pluralized_name.downcase
       end
 
-      def client
-        Layer::HttpClient.new(
-          ENV['LAYER_APP_ID'],
-          ENV['LAYER_API_TOKEN']
-        )
-      end
-
-      def create(url, params = {})
+      def create(client, url, params = {})
         response = client.post(url, body: params.to_json)
         new(response)
       end
 
-      def find(url, id)
+      def find(client, url, id)
         response = client.get("#{url}/#{id}")
         new(response)
       end

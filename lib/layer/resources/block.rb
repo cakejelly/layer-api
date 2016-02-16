@@ -1,12 +1,12 @@
 module Layer
   module Resources
     class Block < Layer::Resource
-      def self.find(url, user)
+      def self.find(client, url, user)
         user_id = user.instance_of?(User) ? user.id : user
         new_abstract_instance(url, user_id)
       end
 
-      def self.list(url, params = {})
+      def self.list(client, url, params = {})
         collection = client.get(url, body: params.to_json)
 
         if collection.any?
@@ -16,7 +16,7 @@ module Layer
         end
       end
 
-      def self.create(url, params = {})
+      def self.create(client, url, params = {})
         user_params = params.instance_of?(User) ? {user_id: params.id} : params
 
         client.post(url, body: user_params.to_json)
