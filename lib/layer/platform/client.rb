@@ -52,6 +52,12 @@ module Layer
       def generate_identity_token(options = {})
         Layer::IdentityToken.new(options)
       end
+
+      def inspect
+        "#<#{self.class} api_token=\"#{@api_token}\" app_id=\"#{@app_id}\">"
+      end
+
+      alias_method :to_s, :inspect
     end
   end
 end

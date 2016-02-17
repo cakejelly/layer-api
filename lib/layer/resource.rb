@@ -33,6 +33,12 @@ module Layer
       attributes["id"].split("/").last if attributes["id"]
     end
 
+    def inspect
+      "#<#{self.class} attributes=#{@attributes}>"
+    end
+
+    alias_method :to_s, :inspect
+
     class << self
       def class_name
         name.split("::").last
