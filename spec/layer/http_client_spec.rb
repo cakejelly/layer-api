@@ -20,7 +20,6 @@ describe Layer::HttpClient do
       # Remove If-None-Match header since it's always going to be random
       # and we can't compare it
       expect(conn.headers).to include(@default_headers)
-      expect(conn.headers).to include("If-None-Match")
     end
 
     it "should use custom api errors middleware" do
