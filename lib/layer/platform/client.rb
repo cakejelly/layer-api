@@ -4,13 +4,13 @@ module Layer
       attr_accessor :api_token, :app_id
 
       def initialize(options = {})
+        id = options[:app_id] || ENV['LAYER_APP_ID']
         @api_token = options[:api_token] || ENV['LAYER_API_TOKEN']
-        @app_id = options[:app_id] || ENV['LAYER_APP_ID']
-        strip_layer_prefix(@app_id)
+        @app_id = strip_layer_prefix(id)
       end
 
       def client
-        @http_client ||= Layer::HttpClient.new(app_id, api_token)
+        @http_client ||= Layer::HttpClient.new(@app_id, @api_token)
       end
 
       def get(url, *args)
