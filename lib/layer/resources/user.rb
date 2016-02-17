@@ -1,20 +1,20 @@
 module Layer
   module Resources
     class User < Layer::Resource
-      def self.find(url, id)
-        new({"id" => id, "url" => "users/#{id}"})
+      def self.find(client, url, id)
+        new({"id" => id, "url" => "users/#{id}"}, client)
       end
 
       def blocks
-        Layer::ResourceProxy.new(self, Layer::Resources::Block)
+        Layer::ResourceProxy.new(client, self, Layer::Resources::Block)
       end
 
       def conversations
-        Layer::ResourceProxy.new(self, Layer::Resources::Conversation)
+        Layer::ResourceProxy.new(client, self, Layer::Resources::Conversation)
       end
 
       def messages
-        Layer::ResourceProxy.new(self, Layer::Resources::Message)
+        Layer::ResourceProxy.new(client, self, Layer::Resources::Message)
       end
     end
   end
