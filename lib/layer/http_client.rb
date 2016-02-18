@@ -42,11 +42,14 @@ module Layer
     end
 
     def run_request(method, url, options = {})
+      headers = options[:headers] || {}
+      headers["If-None-Match"] = SecureRandom.uuid
+
       connection.run_request(
         method,
         url,
         options[:body],
-        options[:headers]
+        headers
       )
     end
 
@@ -54,8 +57,7 @@ module Layer
       {
         'Accept' => 'application/vnd.layer+json; version=1.0',
         'Authorization' => "Bearer #{api_token}",
-        'Content-Type' => 'application/json',
-        'If-None-Match' => SecureRandom.uuid
+        'Content-Type' => 'application/json'
       }
     end
 
