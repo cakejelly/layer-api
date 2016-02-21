@@ -1,6 +1,8 @@
 module Layer
   module Platform
     class Client
+      DEFAULT_HOST = "https://api.layer.com"
+
       attr_accessor :api_token, :app_id
 
       def initialize(options = {})
@@ -10,7 +12,7 @@ module Layer
       end
 
       def client
-        @http_client ||= Layer::HttpClient.new(@app_id, @api_token)
+        @http_client ||= Layer::HttpClient.new(base_url, default_headers)
       end
 
       def strip_layer_prefix(string)
@@ -31,6 +33,18 @@ module Layer
 
       def generate_identity_token(options = {})
         Layer::IdentityToken.new(options)
+      end
+
+      def default_headers
+        {
+          'Accept' => 'application/vnd.layer+json; version=1.0',
+          'Authorization' => "Bearer #{api_token}",
+          'Content-Type' => 'application/json'
+        }
+      end
+
+      def base_url
+        "#{DEFAULT_HOST}/apps/#{app_id}"
       end
 
       def inspect

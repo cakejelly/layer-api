@@ -2,18 +2,16 @@ require 'securerandom'
 
 module Layer
   class HttpClient
-    DEFAULT_HOST = "https://api.layer.com"
+    attr_reader :base_url, :default_headers
 
-    attr_reader :app_id, :api_token
-
-    def initialize(app_id, api_token)
-      @app_id = app_id
-      @api_token = api_token
+    def initialize(base_url, default_headers)
+      @base_url = base_url
+      @default_headers = default_headers
     end
 
     def connection
       @connection ||= Faraday.new(url: base_url) do |faraday|
-        faraday.headers = default_layer_headers
+        faraday.headers = default_headers
         faraday.request  :url_encoded
         faraday.adapter  Faraday.default_adapter
         faraday.use Middleware::ApiErrors
@@ -53,20 +51,8 @@ module Layer
       )
     end
 
-    def default_layer_headers
-      {
-        'Accept' => 'application/vnd.layer+json; version=1.0',
-        'Authorization' => "Bearer #{api_token}",
-        'Content-Type' => 'application/json'
-      }
-    end
-
     def layer_patch_header
       { 'Content-Type' => 'application/vnd.layer-patch+json' }
-    end
-
-    def base_url
-      "#{DEFAULT_HOST}/apps/#{app_id}"
     end
   end
 end
