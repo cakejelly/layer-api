@@ -180,6 +180,14 @@ messages = conv.messages.find("message_id")
 # => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
 ```
 
+#### Deleting A Message
+
+```ruby
+conv = platform.conversations.find("conversation_id")
+conv.messages.find("message_id").destroy
+# => nil
+```
+
 #### Sending Announcements ####
 
 ```ruby
