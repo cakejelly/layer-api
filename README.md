@@ -32,7 +32,7 @@ All client methods return  `Resource` objects or a collection of `Resource` obje
 
 ```ruby
 conversation = platform.conversations.find("fb2f3a48-523d-4449-a57f-c6651fc6612c")
-#<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
+#<Layer::Resources::Conversation @attributes={...}>
 
 # Get the stripped uuid for any resource
 conversation.uuid
@@ -53,12 +53,12 @@ See the official [Platform API docs](https://developer.layer.com/docs/platform) 
 
 ```ruby
 platform = Layer::Platform::Client.new(api_token: "your_api_token", app_id: "your_app_id")
-# => #<Layer::Platform::Client:0x007fdb19844f30 @api_token="...", @app_id="...">
+# => #<Layer::Platform::Client @api_token="...", @app_id="...">
 ```
 If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default and don't need to be included:
 ```ruby
 platform = Layer::Platform::Client.new
-# => #<Layer::Platform::Client:0x007fdb19844f30 @api_token="...", @app_id="...">
+# => #<Layer::Platform::Client @api_token="...", @app_id="...">
 ```
 
 #### Retrieving Conversations ####
@@ -76,11 +76,11 @@ convs = user.conversations.list
 # For a user
 user = platform.users.find("user_id")
 conv = user.conversations.find("conversation_id")
-# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Conversation @attributes={...}>
 
 # or alternatively
 conv = platform.conversations.find("conversation_id")
-# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Conversation @attributes={...}>
 ```
 
 #### Creating Conversations ####
@@ -98,7 +98,7 @@ conversation = {
 }
 
 platform.conversations.create(conversation)
-# => #<Layer::Resources::Conversation:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Conversation @attributes={...}>
 ```
 
 #### Editing Conversations ####
@@ -149,7 +149,7 @@ message = {
 
 conv = platform.conversations.find("conversation_id")
 conv.messages.create(message)
-# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Message @attributes={...}>
 ```
 
 #### Retrieving Messages ####
@@ -172,12 +172,12 @@ conv.messages.list
 # From a specific user's perspective
 user = platform.users.find("user_id")
 messages = user.messages.find("message_id")
-# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Message @attributes={...}>
 
 # From the systems perspective
 conv = platform.conversations.find("conversation_id")
 messages = conv.messages.find("message_id")
-# => #<Layer::Resources::Message:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Message @attributes={...}>
 ```
 
 #### Deleting A Message
@@ -209,7 +209,7 @@ announcement = {
 }
 
 platform.announcements.create(announcement)
-# => #<Layer::Resources::Announcement:0x007fdb18b44bf0 @attributes={...}>
+# => #<Layer::Resources::Announcement @attributes={...}>
 ```
 
 #### Modifying A Users Block List ####
@@ -233,7 +233,7 @@ user.update(operations)
 user = platform.users.find("user_id")
 
 blocks = user.blocks.list
-# => [#<Layer::Resources::Block @attributes={...}>, [#<Layer::Resources::Block @attributes={...}>, ...]
+# => [#<Layer::Resources::Block>, [#<Layer::Resources::Block>, ...]
 ```
 
 #### Blocking Users
