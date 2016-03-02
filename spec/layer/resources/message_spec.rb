@@ -100,4 +100,36 @@ describe Layer::Resources::Message do
       end
     end
   end
+
+  describe "#destroy" do
+    it "should delete message if message exists" do
+      VCR.use_cassette("message_delete") do
+        conv = client.conversations.create(conversation_params)
+        message = conv.messages.create(message_params)
+
+        message.destroy
+
+        expect {
+          conv.messages.find(message.uuid)
+        }.to raise_error(Layer::Errors::NotFound)
+      end
+    end
+  end
+
+  describe "#delete_url" do
+    it "should return correct URL needed for deletion" do
+      attributes = {
+        "id"=>"layer:///messages/779fe2ec-8c1a-4b7c-993c-22df0465af1c",
+        "conversation" => {
+          "id" => "layer:///conversations/b127ccbe-5f95-4d6a-9c01-c1e98e147f4f"
+        }
+      }
+
+      message = described_class.new(attributes, nil)
+      delete_url = message.send(:delete_url)
+      expected_url = "conversations/b127ccbe-5f95-4d6a-9c01-c1e98e147f4f/messages/779fe2ec-8c1a-4b7c-993c-22df0465af1c"
+
+      expect(delete_url).to eq(expected_url)
+    end
+  end
 end
