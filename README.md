@@ -28,7 +28,7 @@ Or install it yourself as:
 ## Usage
 
 ### Resources
-All client methods return  `Resource` objects or a collection of `Resource` objects. Every attribute from a resource can be accessed by calling attribute methods:
+All client methods return `Resource` objects or a collection of `Resource` objects. Every attribute from a resource can be accessed by calling attribute methods:
 
 ```ruby
 conversation = platform.conversations.find("fb2f3a48-523d-4449-a57f-c6651fc6612c")
@@ -46,8 +46,8 @@ conversation.attributes
 # => {"id" => "fb2f3a48-523d-4449-a57f-c6651fc6612c", "url" => "https://api.layer.com/apps/<APP_ID>/conversations/fb2f3a48-523d-4449-a57f-c6651fc6612c", ...}
 ```
 
-### [Platform API](https://developer.layer.com/docs/platform)
-See the official [Platform API docs](https://developer.layer.com/docs/platform) for additional info.
+### [Platform](https://developer.layer.com/docs/platform)
+See the [Platform API docs](https://developer.layer.com/docs/platform) for additional info.
 
 #### Authentication/setup
 
@@ -280,11 +280,75 @@ Make sure the following environment variables are set:
 ```ruby
 # Returns a valid signed identity token. #
 token = platform.generate_identity_token(user_id: "1234", nonce: "your_random_nonce")
-# => #<Layer::IdentityToken:0x007f89b4adb890
+# => #<Layer::IdentityToken:0x007f89b4adb890>
 
 token.to_s
 # => "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsInR.cCI6IkpXVCIsImN0eSI6ImxheWVyLWVpdDt2PTEiLCJraWQiOiJhNz.5YTE0MC02YzY3LTExZTUtYjM0Mi1jZGJmNDAwZTE5NDgifQ"
 ```
+
+### [Webhooks](https://developer.layer.com/docs/webhooks)
+See the [Webhooks API docs](https://developer.layer.com/docs/webhooks) for additional info.
+
+#### Authentication/setup
+
+```ruby
+client = Layer::Webhooks::Client.new(api_token: "your_api_token", app_id: "your_app_id")
+# => #<Layer::Webhooks::Client @api_token="...", @app_id="...">
+```
+If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default and don't need to be included:
+```ruby
+client = Layer::Webhooks::Client.new
+# => #<Layer::Webhooks::Client @api_token="...", @app_id="...">
+```
+
+#### Registering Webhooks
+
+```ruby
+client.webhooks.create(
+  version: "1.0",
+  target_url: "https://mydomain.com/my-webhook-endpoint",
+  events: ["conversation.created", "message.sent"],
+  secret: "1697f925ec7b1697f925ec7b",
+  config: {:key1=>"value1", :key2=>"value2"}
+)
+# => #<Layer::Resources::Webhook @attributes={...}>
+```
+
+#### Listing Webhooks
+
+```ruby
+client.webhooks.list
+# => [#<Layer::Resources::Webhook>, #<Layer::Resources::Webhook>, ...]
+```
+
+#### Retrieving Webhooks
+
+```ruby
+client.webhooks.find("webhook_id")
+# => #<Layer::Resources::Webhook @attributes={...}>
+```
+
+#### Activating Webhooks
+
+```ruby
+webhook = client.webhooks.find("webhook_id")
+webhook.activate
+```
+
+#### Deactivating Webhooks
+
+```ruby
+webhook = client.webhooks.find("webhook_id")
+webhook.deactivate
+```
+
+#### Deleting Webhooks
+
+```ruby
+webhook = client.webhooks.find("webhook_id")
+webhook.destroy
+```
+
 
 ## Development ##
 
