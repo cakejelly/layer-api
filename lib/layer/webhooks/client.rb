@@ -1,5 +1,5 @@
 module Layer
-  module Platform
+  module Webhooks
     class Client < Layer::BaseClient
       attr_accessor :api_token, :app_id
 
@@ -9,24 +9,17 @@ module Layer
         @app_id = strip_layer_prefix(id)
       end
 
-      def announcements
-        Layer::ResourceProxy.new(client, nil, Layer::Resources::Announcement)
-      end
-
-      def conversations
-        Layer::ResourceProxy.new(client, nil, Layer::Resources::Conversation)
-      end
-
-      def users
-        Layer::ResourceProxy.new(client, nil, Layer::Resources::User)
-      end
-
-      def generate_identity_token(options = {})
-        Layer::IdentityToken.new(options)
+      def webhooks
+        Layer::ResourceProxy.new(client, nil, Layer::Resources::Webhook)
       end
 
       def default_headers
-        super.merge({"Authorization" => "Bearer #{api_token}"})
+        super.merge(
+          {
+            "Authorization" => "Bearer #{api_token}",
+            "Accept" => "application/vnd.layer.webhooks+json; version=1.0"
+          }
+        )
       end
 
       def base_url

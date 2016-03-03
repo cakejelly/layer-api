@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.layer.com/apps/<APP_ID>/webhooks/f0de1ed0-91bf-4678-922b-ab9a5aa7e86c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer.webhooks+json; version=1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_TOKEN>
+      User-Agent:
+      - Faraday v0.9.2
+      If-None-Match:
+      - 35fa9489-c78e-4247-887f-1b236d001a96
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Thu, 03 Mar 2016 22:45:15 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '534'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"layer:///apps/<APP_ID>/webhooks/f0de1ed0-91bf-4678-922b-ab9a5aa7e86c","url":"https://api.layer.com/apps/<APP_ID>/webhooks/f0de1ed0-91bf-4678-922b-ab9a5aa7e86c","version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"status":"inactive","status_reason":"Verification
+        failed due to unexpected response status: 404 Not Found","created_at":"2016-03-03T22:32:15.828Z","config":{"key1":"value1","key2":"value2"}}'
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 22:45:14 GMT
+recorded_with: VCR 2.9.3

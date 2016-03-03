@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"secret":"1697f925ec7b1697f925ec7b","config":{"key1":"value1","key2":"value2"}}'
+    headers:
+      Accept:
+      - application/vnd.layer.webhooks+json; version=1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_TOKEN>
+      User-Agent:
+      - Faraday v0.9.2
+      If-None-Match:
+      - e67bf0ab-c773-4a3e-a2d4-ac74c90d76e5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Thu, 03 Mar 2016 22:51:08 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '449'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"layer:///apps/<APP_ID>/webhooks/b3691a2d-462c-402b-b5e9-1579fbd085f9","url":"https://api.layer.com/apps/<APP_ID>/webhooks/b3691a2d-462c-402b-b5e9-1579fbd085f9","version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"status":"unverified","created_at":"2016-03-03T22:51:08.809Z","config":{"key1":"value1","key2":"value2"}}'
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 22:51:07 GMT
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/webhooks/b3691a2d-462c-402b-b5e9-1579fbd085f9/activate
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.layer.webhooks+json; version=1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_TOKEN>
+      User-Agent:
+      - Faraday v0.9.2
+      If-None-Match:
+      - 0b3c0f9d-8a77-454c-9456-87ffc680d6bb
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Thu, 03 Mar 2016 22:51:09 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '534'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"layer:///apps/<APP_ID>/webhooks/b3691a2d-462c-402b-b5e9-1579fbd085f9","url":"https://api.layer.com/apps/<APP_ID>/webhooks/b3691a2d-462c-402b-b5e9-1579fbd085f9","version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"status":"inactive","status_reason":"Verification
+        failed due to unexpected response status: 404 Not Found","created_at":"2016-03-03T22:51:08.809Z","config":{"key1":"value1","key2":"value2"}}'
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 22:51:08 GMT
+recorded_with: VCR 2.9.3

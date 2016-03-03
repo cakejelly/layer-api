@@ -5,10 +5,10 @@ describe Layer::HttpClient do
   before do
     @layer = Layer::Platform::Client.new
     @client = @layer.client
-    @default_headers = @client.default_layer_headers.reject{|k, v| k == 'If-None-Match'}
+    @default_headers = @client.default_headers.reject{|k, v| k == 'If-None-Match'}
   end
 
-  describe ".connection" do
+  describe "#connection" do
     it "should use the default base url" do
       conn = @client.connection
       expect(conn.url_prefix.to_s).to eq(@client.base_url)
@@ -37,7 +37,7 @@ describe Layer::HttpClient do
     end
   end
 
-  describe ".run_request" do
+  describe "#run_request" do
     it "should successfully add default layer headers to request" do
       VCR.use_cassette('conversation') do
         request = @client.run_request(:get, 'users/test/blocks')
@@ -66,7 +66,7 @@ describe Layer::HttpClient do
     end
   end
 
-  describe ".call" do
+  describe "#call" do
     it "should run request & return response body" do
       VCR.use_cassette('conversation') do
         existing_conversation = @layer.conversations.create(conversation_params)
@@ -95,23 +95,6 @@ describe Layer::HttpClient do
         response = @layer.conversations.find(existing_conversation_id).update(operations)
         expect(response).to be(nil)
       end
-    end
-  end
-
-  describe ".default_layer_headers" do
-    it "should pass api_token into Authorization header" do
-      api_token = "1234"
-      layer = Layer::Platform::Client.new(api_token: api_token)
-
-      expect(layer.client.default_layer_headers['Authorization']).to include(api_token)
-    end
-  end
-
-  describe ".base_url" do
-    it "should contain app_id" do
-      app_id = "1234"
-      layer = Layer::Platform::Client.new(app_id: app_id)
-      expect(layer.client.base_url).to include(app_id)
     end
   end
 end

@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"secret":"1697f925ec7b1697f925ec7b","config":{"key1":"value1","key2":"value2"}}'
+    headers:
+      Accept:
+      - application/vnd.layer.webhooks+json; version=1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_TOKEN>
+      User-Agent:
+      - Faraday v0.9.2
+      If-None-Match:
+      - 47b60b00-2cac-406a-a1b0-e0c11870ed87
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Thu, 03 Mar 2016 22:55:59 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '449'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"layer:///apps/<APP_ID>/webhooks/a0d5a82e-f294-4c7e-9d8d-5574b071d9f3","url":"https://api.layer.com/apps/<APP_ID>/webhooks/a0d5a82e-f294-4c7e-9d8d-5574b071d9f3","version":"1.0","target_url":"https://mydomain.com/my-webhook-endpoint","events":["conversation.created","message.sent"],"status":"unverified","created_at":"2016-03-03T22:55:59.605Z","config":{"key1":"value1","key2":"value2"}}'
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 22:55:58 GMT
+recorded_with: VCR 2.9.3

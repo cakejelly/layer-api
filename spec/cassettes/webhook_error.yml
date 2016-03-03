@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.layer.com/apps/<APP_ID>/webhooks
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.layer.webhooks+json; version=1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_TOKEN>
+      User-Agent:
+      - Faraday v0.9.2
+      If-None-Match:
+      - 34f6b127-a05b-42fa-ae08-51d3ca4a1066
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Thu, 03 Mar 2016 22:35:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '168'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"missing_property","code":104,"message":"The version property
+        cannot be omitted.","url":"https://developer.layer.com/docs/webhooks","data":{"property":"version"}}'
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 22:35:23 GMT
+recorded_with: VCR 2.9.3

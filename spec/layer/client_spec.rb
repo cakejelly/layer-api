@@ -52,12 +52,29 @@ describe Layer::Platform::Client do
       expect(layer.client).to be_instance_of(Layer::HttpClient)
     end
 
-    it "should assign the same app_id & api_token as the current instance" do
+    it "should assign the same base_url and default_headers as the current instance" do
       layer = Layer::Platform::Client.new
       client = layer.client
 
-      expect(layer.app_id).to eq(client.app_id)
-      expect(layer.api_token).to eq(client.api_token)
+      expect(layer.base_url).to eq(client.base_url)
+      expect(layer.default_headers).to eq(client.default_headers)
+    end
+  end
+
+  describe "#default_headers" do
+    it "should pass api_token into Authorization header" do
+      api_token = "1234"
+      layer = Layer::Platform::Client.new(api_token: api_token)
+
+      expect(layer.client.default_headers['Authorization']).to include(api_token)
+    end
+  end
+
+  describe "#base_url" do
+    it "should contain app_id" do
+      app_id = "1234"
+      layer = Layer::Platform::Client.new(app_id: app_id)
+      expect(layer.client.base_url).to include(app_id)
     end
   end
 end
