@@ -1,7 +1,7 @@
-# Layer API Ruby Client
+# Layer Ruby Gem
 [![Build Status](https://travis-ci.org/cakejelly/layer-api.svg?branch=master)](https://travis-ci.org/cakejelly/layer-api) [![Gem Version](https://badge.fury.io/rb/layer-api.svg)](http://badge.fury.io/rb/layer-api)
 
-A very simple wrapper for Layer's Web API's
+Simple wrapper for Layer's Web API's
 
 If you want to learn more, check out the [official documentation](https://developer.layer.com/docs/platform).
 
