@@ -3,6 +3,30 @@ require 'spec_helper'
 describe Layer::Resources::Webhook do
   let(:client) { Layer::Webhooks::Client.new }
 
+  describe "#activate" do
+    it "should start activation process for Webhook" do
+      VCR.use_cassette("webhook_activate") do
+        webhook = client.webhooks.create(webhook_params)
+
+        expect(client.client).to receive(:post)
+
+        webhook.activate
+      end
+    end
+  end
+
+  describe "#deactivate" do
+    it "should start deactivation process for Webhook" do
+      VCR.use_cassette("webhook_deactivate") do
+        webhook = client.webhooks.create(webhook_params)
+
+        expect(client.client).to receive(:post)
+
+        webhook.deactivate
+      end
+    end
+  end
+
   describe ".create" do
     it "should create a new Webhook" do
       VCR.use_cassette("webhook_create") do
