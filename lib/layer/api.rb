@@ -8,6 +8,7 @@ require "layer/errors"
 require "layer/resource"
 require "layer/resource_proxy"
 require "layer/identity_token"
+require "layer/base_client"
 
 # Platform
 require "layer/platform/client"

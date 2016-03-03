@@ -1,22 +1,12 @@
 module Layer
   module Platform
-    class Client
-      DEFAULT_HOST = "https://api.layer.com"
-
+    class Client < Layer::BaseClient
       attr_accessor :api_token, :app_id
 
       def initialize(options = {})
         id = options[:app_id] || ENV['LAYER_APP_ID']
         @api_token = options[:api_token] || ENV['LAYER_API_TOKEN']
         @app_id = strip_layer_prefix(id)
-      end
-
-      def client
-        @http_client ||= Layer::HttpClient.new(base_url, default_headers)
-      end
-
-      def strip_layer_prefix(string)
-        string.split("/").last if string
       end
 
       def announcements
@@ -36,11 +26,7 @@ module Layer
       end
 
       def default_headers
-        {
-          'Accept' => 'application/vnd.layer+json; version=1.0',
-          'Authorization' => "Bearer #{api_token}",
-          'Content-Type' => 'application/json'
-        }
+        super.merge({"Authorization" => "Bearer #{api_token}"})
       end
 
       def base_url
