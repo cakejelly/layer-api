@@ -6,21 +6,21 @@ describe Layer::ResourceProxy do
   describe "#new" do
     it "should assign a HttpClient instance" do
       http_client = Layer::Platform::Client.new.client
-      proxy = described_class.new(http_client, nil, nil)
+      proxy = described_class.new(http_client, Layer::Resource, Layer::Resource)
 
       expect(proxy.instance_variable_get("@client")).to eq(http_client)
     end
 
     it "should assign a base resource" do
-      base = Class.new
-      proxy = described_class.new(nil, base, nil)
+      base = Layer::Resource
+      proxy = described_class.new(nil, base, Layer::Resource)
 
       expect(proxy.instance_variable_get("@base")).to eq(base)
     end
 
     it "should assign a target resource" do
-      target = Class.new
-      proxy = described_class.new(nil, nil, target)
+      target = Layer::Resource
+      proxy = described_class.new(nil, Layer::Resource, target)
 
       expect(proxy.instance_variable_get("@resource")).to eq(target)
     end
