@@ -47,7 +47,7 @@ module Layer
     def private_key
       # Cloud66 stores newlines as \n instead of \\n
       key = ENV['LAYER_PRIVATE_KEY'].dup
-      OpenSSL::PKey::RSA.new(key.gsub!("\\n","\n"))
+      OpenSSL::PKey::RSA.new(key.gsub("\\n","\n"))
     end
   end
 end
