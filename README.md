@@ -123,6 +123,30 @@ conv.destroy
 
 ```
 
+#### Initiating a Rich Content Upload
+
+```ruby
+conv = platform.conversations.find("conversation_id")
+content = conv.content.create(mime_type: "image/png", file: File.open("image.png"))
+# => #<Layer::Resources::RichContent @attributes={...}>
+
+content.upload_url
+# => "https://www.googleapis.com/upload/storage/path/to/content"
+```
+
+#### Refreshing the download URL for a Content Object
+
+```ruby
+content = conv.content.find("content_id")
+# => #<Layer::Resources::RichContent @attributes={...}>
+
+content.download_url
+# => "http://google-testbucket.storage.googleapis.com/some/download/path"
+
+content.refresh_url
+"https://api.layer.com/apps/<APP_ID>/conversations/<CONVERSATION_ID>/content/<CONTENT_ID>"
+```
+
 #### Sending Messages ####
 
 ```ruby
