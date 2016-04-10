@@ -1,0 +1,22 @@
+{
+  "etag": "CODY+uDM2ssCEAE=",
+  "crc32c": "8OJNpw==",
+  "owner": {
+    "entityId": "00b4903a9739f8dce455a6e623e7d62928c6655eeed3047adbdc30f553bcca5c",
+    "entity": "user-00b4903a9739f8dce455a6e623e7d62928c6655eeed3047adbdc30f553bcca5c"
+  },
+  "mediaLink": "https:\/\/www.googleapis.com\/download\/storage\/v1\/b\/content-prod1\/o\/c2fc75ce-2f0e-11e5-a716-4290ac022c3d%2Fb127ccbe-5f95-4d6a-9c01-c1e98e147f4f%2Ffe776bf0-f221-11e5-9ce5-0242ac110083?generation=1458866376060000&alt=media",
+  "md5Hash": "PE3ns7xp6S1lfEewRXFB3A==",
+  "size": "6486",
+  "storageClass": "STANDARD",
+  "updated": "2016-03-25T00:39:36.058Z",
+  "timeCreated": "2016-03-25T00:39:36.058Z",
+  "contentType": "image\/png",
+  "metageneration": "1",
+  "generation": "1458866376060000",
+  "bucket": "content-prod1",
+  "name": "c2fc75ce-2f0e-11e5-a716-4290ac022c3d\/b127ccbe-5f95-4d6a-9c01-c1e98e147f4f\/fe776bf0-f221-11e5-9ce5-0242ac110083",
+  "selfLink": "https:\/\/www.googleapis.com\/storage\/v1\/b\/content-prod1\/o\/c2fc75ce-2f0e-11e5-a716-4290ac022c3d%2Fb127ccbe-5f95-4d6a-9c01-c1e98e147f4f%2Ffe776bf0-f221-11e5-9ce5-0242ac110083",
+  "id": "content-prod1\/c2fc75ce-2f0e-11e5-a716-4290ac022c3d\/b127ccbe-5f95-4d6a-9c01-c1e98e147f4f\/fe776bf0-f221-11e5-9ce5-0242ac110083\/1458866376060000",
+  "kind": "storage#object"
+}

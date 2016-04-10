@@ -23,5 +23,6 @@ require "layer/resources/announcement"
 require "layer/resources/user"
 require "layer/resources/block"
 require "layer/resources/webhook"
+require "layer/resources/rich_content"
 
 require "layer/middleware/api_errors"

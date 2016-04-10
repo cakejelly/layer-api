@@ -13,6 +13,7 @@ module Layer
       @connection ||= Faraday.new(url: base_url) do |faraday|
         faraday.headers = default_headers
         faraday.request  :url_encoded
+        faraday.request  :multipart
         faraday.adapter  Faraday.default_adapter
         faraday.use Middleware::ApiErrors
       end
@@ -20,6 +21,10 @@ module Layer
 
     def get(url, options = {})
       call(:get, url, options)
+    end
+
+    def put(url, options = {})
+      call(:put, url, options)
     end
 
     def post(url, options = {})

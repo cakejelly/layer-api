@@ -105,4 +105,23 @@ describe Layer::Resources::Conversation do
       end
     end
   end
+
+  describe "#content" do
+    it "should return new ResourceProxy" do
+      VCR.use_cassette("conversation") do
+        conv = client.conversations.create(conversation_params)
+        expect(conv.content).to be_instance_of(Layer::ResourceProxy)
+      end
+    end
+  end
+
+  describe "#content_url" do
+    it "should return url for uploading rich content" do
+      VCR.use_cassette("conversation") do
+        conv = client.conversations.create(conversation_params)
+        expected = "conversations/#{conv.uuid}/content"
+        expect(expected).to eq(conv.content_url)
+      end
+    end
+  end
 end
