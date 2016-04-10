@@ -11,6 +11,8 @@ module Layer
         }
 
         response = client.post(url, body: params.to_json, headers: headers)
+        response.merge!("mime_type" => mime_type)
+
         new(response, client).upload(file)
       end
 
