@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'layer/api'
 require 'vcr'
 require 'layer_helper'
+require "webmock/rspec"
 
 VCR.configure do |c|
   c.cassette_library_dir = "spec/cassettes"
