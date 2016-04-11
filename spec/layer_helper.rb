@@ -68,4 +68,19 @@ module LayerHelper
       config: {:key1=>"value1", :key2=>"value2"}
     }
   end
+
+  def user_identity_params
+    {
+      display_name: "Frodo the Dodo",
+      avatar_url: "http://sillylordoftheringspictures.com/frodo-riding-a-dodo.png",
+      first_name: "Frodo",
+      last_name: "Baggins",
+      phone_number: "13791379137",
+      email_address: "frodo@sillylordoftheringspictures.com",
+      metadata: {
+        level: "35",
+        race: "Dodo"
+      }
+    }
+  end
 end

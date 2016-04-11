@@ -1,5 +1,4 @@
 require "spec_helper"
-require "webmock/rspec"
 
 describe Layer::Resources::RichContent do
   let(:client) { Layer::Platform::Client.new.client }
