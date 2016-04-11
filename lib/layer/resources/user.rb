@@ -41,6 +41,15 @@ module Layer
         client.delete(identity_url)
       end
 
+      def set_badge(badge_count)
+        body = { external_unread_count: badge_count }
+        client.put("#{url}/badge", body: body.to_json)
+      end
+
+      def badge
+        client.get("#{url}/badge")
+      end
+
       private
 
       def identity_url

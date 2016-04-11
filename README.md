@@ -365,6 +365,22 @@ user.destroy_identity
 # => true
 ```
 
+#### Setting a Users Badge
+
+```ruby
+user = platform.users.find("user_id")
+user.set_badge(10)
+# => true
+```
+
+#### Retrieving a Users Badge
+
+```ruby
+user = platform.users.find("user_id")
+user.badge
+# => { "external_unread_count" => 13, "unread_conversation_count" => 10, "unread_message_count" => 50 }
+```
+
 
 #### Generating Identity Tokens ####
 See: [the official authentication guide](https://developer.layer.com/docs/android/guides#authentication)
