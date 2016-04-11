@@ -81,4 +81,44 @@ describe Layer::Resources::User do
       expect(identity).to be_instance_of(Hash)
     end
   end
+
+  describe "#update_identity" do
+    let(:patch_header) { { 'Content-Type' => 'application/vnd.layer-patch+json' } }
+
+    it "should update the users identity" do
+      allow(http_client).to receive(:patch).and_return("")
+      allow(http_client).to receive(:layer_patch_header).and_return(patch_header)
+
+      expect(http_client).to receive(:patch).
+                              with(
+                                "users/#{user.id}/identity",
+                                body: user_identity_operations.to_json,
+                                headers: patch_header
+                              )
+
+      user.update_identity(user_identity_operations)
+    end
+  end
+
+  describe "#replace_identity" do
+    it "should replace the users identity" do
+      allow(http_client).to receive(:put).and_return("")
+      expect(http_client).to receive(:put).
+                              with(
+                                "users/#{user.id}/identity",
+                                body: user_identity_params.to_json
+                              )
+
+      user.replace_identity(user_identity_params)
+    end
+  end
+
+  describe "#delete_identity" do
+    it "should make a request to delete the users identity" do
+      allow(http_client).to receive(:delete).and_return("")
+      expect(http_client).to receive(:delete).with("users/#{user.id}/identity")
+
+      user.destroy_identity
+    end
+  end
 end

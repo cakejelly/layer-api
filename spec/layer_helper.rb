@@ -83,4 +83,12 @@ module LayerHelper
       }
     }
   end
+
+  def user_identity_operations
+    [
+      {operation: "set", property: "last_name", value: "Dodo"},
+      {operation: "set", property: "phone_number", value: ""},
+      {operation: "set", property: "metadata.level", value: "2"}
+    ]
+  end
 end
