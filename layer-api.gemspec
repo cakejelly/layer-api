@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.summary       = "A ruby toolkit for Layer's Web API's (https://developer.layer.com/docs)"
-  spec.description   = "Simple wrapper for the Layer's Web API's"
+  spec.description   = "Simple wrapper for Layer's Web API's"
   spec.homepage      = "https://github.com/cakejelly/layer-api"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
