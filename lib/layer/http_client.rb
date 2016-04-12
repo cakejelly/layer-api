@@ -41,7 +41,7 @@ module Layer
 
     def call(method, url, options = {})
       response = run_request(method, url, options)
-      response.body.empty? ? nil : JSON.parse(response.body)
+      response.body.empty? ? true : JSON.parse(response.body)
     end
 
     def run_request(method, url, options = {})

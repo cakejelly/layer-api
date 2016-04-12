@@ -112,14 +112,14 @@ operations = [
 ]
 
 conv.update(operations)
-# => nil
+# => true
 ```
 #### Deleting Conversations ####
 
 ```ruby
 conv = platform.conversations.find("conversation_id")
 conv.destroy
-# => nil
+# => true
 
 ```
 
@@ -209,7 +209,7 @@ messages = conv.messages.find("message_id")
 ```ruby
 conv = platform.conversations.find("conversation_id")
 conv.messages.find("message_id").destroy
-# => nil
+# => true
 ```
 
 #### Sending Announcements ####
@@ -248,7 +248,7 @@ operations = [
 ]
 
 user.update(operations)
-# => nil
+# => true
 ```
 
 #### Retrieving A Users Block List
@@ -283,14 +283,14 @@ owner.blocks.create(blocked)
 # using the blocked users id
 owner = platform.users.find("owner")
 owner.blocks.find("blocked_user").destroy
-# => nil
+# => true
 
 # using a User object
 owner = platform.users.find("owner")
 blocked = platform.users.find("blocked")
 
 owner.blocks.find(blocked).destroy
-# => nil
+# => true
 ```
 
 #### Generating Identity Tokens ####
