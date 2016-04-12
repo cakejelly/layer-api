@@ -82,7 +82,7 @@ describe Layer::HttpClient do
       end
     end
 
-    it "should run request & return nil if response has no body" do
+    it "should run request & return true if response has no body" do
       VCR.use_cassette('conversation') do
         existing_conversation = @layer.conversations.create(conversation_params)
         existing_conversation_id = existing_conversation.uuid
@@ -93,7 +93,7 @@ describe Layer::HttpClient do
         ]
 
         response = @layer.conversations.find(existing_conversation_id).update(operations)
-        expect(response).to be(nil)
+        expect(response).to be(true)
       end
     end
   end
