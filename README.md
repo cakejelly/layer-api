@@ -293,6 +293,79 @@ owner.blocks.find(blocked).destroy
 # => true
 ```
 
+#### Creating a User Identity
+
+```ruby
+identity = {
+  display_name: "Frodo the Dodo",
+  avatar_url: "http://sillylordoftheringspictures.com/frodo-riding-a-dodo.png",
+  first_name: "Frodo",
+  last_name: "Baggins",
+  phone_number: "13791379137",
+  email_address: "frodo@sillylordoftheringspictures.com",
+  metadata: {
+    level: "35",
+    race: "Dodo"
+  }
+}
+
+user = platform.users.find("user_id")
+user.create_identity(identity)
+# => true
+
+```
+
+#### Retrieving a User's Identity
+
+```ruby
+user = platform.users.find("user_id")
+user.identity
+# => {"first_name"=>"Frodo", "phone_number"=>"13791379137", "email_address"=>"frodo@sillylordoftheringspictures.com", "display_name"=>"Frodo the Dodo", "user_id"=>"jake", "last_name"=>"Baggins", "metadata"=>{"race"=>"Dodo", "level"=>"35"}, "avatar_url"=>"http://sillylordoftheringspictures.com/frodo-riding-a-dodo.png"}
+```
+
+#### Updating an Identity
+
+```ruby
+operations = [
+  { operation: "set", property: "last_name", value: "Dodo" },
+  { operation: "set", property: "phone_number", value: "" },
+  { operation: "set", property: "metadata.level", value: "2" }
+]
+
+user.update_identity(operations)
+# => true
+```
+
+#### Replacing an identity
+
+```ruby
+identity = {
+  display_name: "Frodo the Dodo",
+  avatar_url: "http://sillylordoftheringspictures.com/frodo-riding-a-dodo.png",
+  first_name: "Frodo",
+  last_name: "Baggins",
+  phone_number: "13791379137",
+  email_address: "frodo@sillylordoftheringspictures.com",
+  metadata: {
+    level: "35",
+    race: "Dodo"
+  }
+}
+
+user.replace_identity(identity)
+# => true
+
+```
+
+#### Deleting a User's Identity
+
+```ruby
+user = platform.users.find("user_id")
+user.destroy_identity
+# => true
+```
+
+
 #### Generating Identity Tokens ####
 See: [the official authentication guide](https://developer.layer.com/docs/android/guides#authentication)
 
