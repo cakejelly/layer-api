@@ -144,7 +144,7 @@ content.download_url
 # => "http://google-testbucket.storage.googleapis.com/some/download/path"
 
 content.refresh_url
-"https://api.layer.com/apps/<APP_ID>/conversations/<CONVERSATION_ID>/content/<CONTENT_ID>"
+# => "https://api.layer.com/apps/<APP_ID>/conversations/<CONVERSATION_ID>/content/<CONTENT_ID>"
 ```
 
 #### Sending Messages ####
