@@ -56,6 +56,7 @@ platform = Layer::Platform::Client.new(api_token: "your_api_token", app_id: "you
 # => #<Layer::Platform::Client @api_token="...", @app_id="...">
 ```
 If you have `ENV['LAYER_API_TOKEN']` and `ENV['LAYER_APP_ID']` environment variables setup, they will be used by default and don't need to be included:
+
 ```ruby
 platform = Layer::Platform::Client.new
 # => #<Layer::Platform::Client @api_token="...", @app_id="...">
