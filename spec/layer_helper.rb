@@ -91,4 +91,12 @@ module LayerHelper
       {operation: "set", property: "metadata.level", value: "2"}
     ]
   end
+
+  def user_badge
+    {
+      external_unread_count: 13,
+      unread_conversation_count: 10,
+      unread_message_count: 50
+    }
+  end
 end

@@ -121,4 +121,32 @@ describe Layer::Resources::User do
       user.destroy_identity
     end
   end
+
+  describe "#set_badge" do
+    let(:badge_count) { { external_unread_count: 5 } }
+
+    it "should set the badge count for a user" do
+      allow(http_client).to receive(:put).and_return(nil)
+      expect(http_client).to receive(:put).with(
+                               "users/#{user.id}/badge",
+                               body: badge_count.to_json
+                             )
+      user.set_badge(5)
+    end
+  end
+
+  describe "#badge" do
+    before do
+      allow(http_client).to receive(:get).and_return(user_badge)
+      expect(http_client).to receive(:get).with("users/#{user.id}/badge")
+    end
+
+    it "should retrieve badge for a user" do
+      user.badge
+    end
+
+    it "should return hash of badge values" do
+      expect(user.badge).to be_instance_of(Hash)
+    end
+  end
 end
