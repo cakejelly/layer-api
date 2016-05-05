@@ -63,7 +63,12 @@ module Layer
       end
 
       def list(client, url, params = {})
-        collection = client.get(url, body: params.to_json)
+        if params.any?
+          query = params.collect{ |key, value| "#{key}=#{value}" }.join("&")
+          url = "#{url}?#{query}"
+        end
+        
+        collection = client.get(url)
 
         if collection.any?
           collection.map{ |resource| new(resource, client) }
