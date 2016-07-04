@@ -16,6 +16,9 @@ require "layer/platform/client"
 # Webhooks
 require "layer/webhooks/client"
 
+# Websocket
+require "layer/websocket/client"
+
 # Resources
 require "layer/resources/conversation"
 require "layer/resources/message"
