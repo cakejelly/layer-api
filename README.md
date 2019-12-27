@@ -1,3 +1,4 @@
+# [DEPRECATED] The layer messaging platform shut down on October 30th 2019 along with it's API
 # Layer Ruby Gem
 [![Build Status](https://travis-ci.org/cakejelly/layer-api.svg?branch=master)](https://travis-ci.org/cakejelly/layer-api) [![Gem Version](https://badge.fury.io/rb/layer-api.svg)](http://badge.fury.io/rb/layer-api)
 
